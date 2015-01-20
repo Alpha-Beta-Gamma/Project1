@@ -21,77 +21,88 @@ import edu.csupomona.cs480.util.ResourceResolver;
  */
 public class FSUserManager implements UserManager {
 
-	/**
-	 * We persist all the user related objects as JSON.
-	 * <p>
-	 * For more information about JSON and ObjectMapper, please see:
-	 * http://www.journaldev.com/2324/jackson-json-processing-api-in-java-example-tutorial
-	 *
-	 * or Google tons of tutorials
-	 *
-	 */
-	private static final ObjectMapper JSON = new ObjectMapper();
+   /**
+    * We persist all the user related objects as JSON.
+    * <p>
+    * For more information about JSON and ObjectMapper, please see:
+    * http://www.journaldev.com/2324/jackson-json-processing-api-in-java-example-tutorial
+    *
+    * or Google tons of tutorials
+    *
+    */
+   private static final ObjectMapper JSON = new ObjectMapper();
 
-	/**
-	 * Load the user map from the local file.
-	 *
-	 * @return
-	 */
-	private UserMap getUserMap() {
-		UserMap userMap = null;
-		File userFile = ResourceResolver.getUserFile();
-        if (userFile.exists()) {
-        	// read the file and convert the JSON content
-        	// to the UserMap object
-            try {
-				userMap = JSON.readValue(userFile, UserMap.class);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-        } else {
-        	userMap = new UserMap();
-        }
-        return userMap;
-	}
-
-	/**
-	 * Save and persist the user map in the local file.
-	 *
-	 * @param userMap
-	 */
-	private void persistUserMap(UserMap userMap) {
-		try {
-			// convert the user object to JSON format
-            JSON.writeValue(ResourceResolver.getUserFile(), userMap);
-        } catch (IOException e) {
+   /**
+    * Load the user map from the local file.
+    *
+    * @return
+    */
+   private UserMap getUserMap() {
+      UserMap userMap = null;
+      File userFile = ResourceResolver.getUserFile();
+      if (userFile.exists()) {
+         // read the file and convert the JSON content
+         // to the UserMap object
+         try {
+            userMap = JSON.readValue(userFile, UserMap.class);
+         } catch (IOException e) {
             e.printStackTrace();
-        }
-	}
+         }
+      } else {
+         userMap = new UserMap();
+      }
+      return userMap;
+   }
 
-	@Override
-	public User getUser(String userId) {
-		UserMap userMap = getUserMap();
-        return userMap.get(userId);
-	}
+   /**
+    * Save and persist the user map in the local file.
+    *
+    * @param userMap
+    */
+   private void persistUserMap(UserMap userMap) {
+      try {
+         // convert the user object to JSON format
+         JSON.writeValue(ResourceResolver.getUserFile(), userMap);
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+   }
 
-	@Override
-	public void updateUser(User user) {
-		UserMap userMap = getUserMap();
-		userMap.put(user.getId(), user);
-		persistUserMap(userMap);
-	}
+   @Override
+   public User getUser(String userId) {
+      UserMap userMap = getUserMap();
+      return userMap.get(userId);
+   }
 
-	@Override
-	public void deleteUser(String userId) {
-		UserMap userMap = getUserMap();
-		userMap.remove(userId);
-		persistUserMap(userMap);
-	}
+   @Override
+   public void updateUser(User user) {
+      UserMap userMap = getUserMap();
+      userMap.put(user.getId(), user);
+      persistUserMap(userMap);
+   }
 
-	@Override
-	public List<User> listAllUsers() {
-		UserMap userMap = getUserMap();
-		return new ArrayList<User>(userMap.values());
-	}
+   @Override
+   public void deleteUser(String userId) {
+      UserMap userMap = getUserMap();
+      userMap.remove(userId);
+      persistUserMap(userMap);
+   }
+
+   @Override
+   public List<User> listAllUsers() {
+      UserMap userMap = getUserMap();
+      return new ArrayList<User>(userMap.values());
+   }
+
+   @Override
+   public List<String> listAllMajors() {
+      UserMap userMap = getUserMap();
+      ArrayList<String> list = new ArrayList<String>();
+
+      for (User u : userMap.values())
+         list.add(u.getMajor());
+
+      return list;
+   }
 
 }
