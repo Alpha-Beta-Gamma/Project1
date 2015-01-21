@@ -51,6 +51,23 @@ public class WebController {
       return "OK";
    }
 
+   @RequestMapping(value = "/cs480/whattoexpect", method = RequestMethod.GET)
+   String whatToExpect() {
+      // You can replace this with other string,
+      // and run the application locally to check your changes
+      // with the URL: http://localhost:8080/
+      return "You can expect a grade distribution of: things"
+      		+ "(github upload test API)";
+   }
+   
+   @RequestMapping(value = "/cs480/whattoget", method = RequestMethod.GET)
+   String whatToGet() {
+      // You can replace this with other string,
+      // and run the application locally to check your changes
+      // with the URL: http://localhost:8080/
+      return "To pass, you need: NaN (You're doomed)"
+      		+ "(github upload test API)";
+   }
    /**
     * This is a simple example of how to use a data manager
     * to retrieve the data and return it as an HTTP response.
