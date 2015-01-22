@@ -68,6 +68,14 @@ public class WebController {
       return "To pass, you need: NaN (You're doomed)"
       		+ "(github upload test API)";
    }
+   
+   @RequestMapping(value = "/cs480/whatyouget", method = RequestMethod.GET)
+   String whatYouGet() {
+      // You can replace this with other string,
+      // and run the application locally to check your changes
+      // with the URL: http://localhost:8080/
+      return "IHEARTPRESTON";
+   }
    /**
     * This is a simple example of how to use a data manager
     * to retrieve the data and return it as an HTTP response.
