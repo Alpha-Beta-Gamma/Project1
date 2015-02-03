@@ -1,0 +1,30 @@
+<html>
+	<head>
+	    <title>Create an Account</title>
+	    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	    <script src="/js/createaccount-control.js"></script>
+	</head>
+
+	<body onload="healthCheck();">
+		Demo Project is running: <label id="status"></label>
+
+    <section class="loginform cf">  
+	<form name="login" action="index_submit" method="get" accept-charset="utf-8">  
+    	<ul>  
+        	<li><label for="usermail">Email</label>  
+     	    <input type="email" name="usermail" placeholder="yourname@email.com" required></li>
+     	    
+     	    <li><label for="usermail2">Confirm Email</label>  
+     	    <input type="email" name="usermail2" placeholder="yourname@email.com" required></li>  
+     	    
+        	<li><label for="password">Password</label>  
+         	<input type="password" name="password" placeholder="password" required></li>  
+         	<li>  
+        <input type="submit" value="Create Account"></li>  
+    	</ul>  
+	</form>  
+	</section>
+
+	</body>
+
+</html>
