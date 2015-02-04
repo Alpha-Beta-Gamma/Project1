@@ -4,13 +4,14 @@
     <title>CS480 Demo Web Service</title>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>    
     <script src="/js/home-control.js"></script>
+    <link rel="stylesheet" href="C:/Users/Jesse/Documents/Git Projects/Project1/src/main/resources/templates/stylesheet.css">
 </head>
 
 <body>    
-    
-    <div>
-        This is a simple page to demonstrate the web UI development. 
-        The key tools and techniques used include:
+    <div style="color:#0000FF" align="center">
+        <h1>Welcome to our cool website! </h1>
+        <h1>The key tools and techniques used include: </h1>
+        <h1>TURN BLUE </h1>
         <ul>
             <li>HTML - Obviously</li>
             <li><a href="http://freemarker.org/">FreeMarker</a></li>
