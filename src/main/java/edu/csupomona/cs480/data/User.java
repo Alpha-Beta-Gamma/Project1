@@ -2,50 +2,57 @@ package edu.csupomona.cs480.data;
 
 import java.util.Date;
 
-
 /**
  * The basic user object.
  */
 public class User {
 
-	/** The unique user Id */
-    private String id;
-    /** The unique user Id */
-    private String name;
-    /** The unique user Id */
-    private String major;
-    /** The timestamp when the user is being created */
-    private String creationTime = new Date(System.currentTimeMillis()).toString();
+   /** The unique user Id */
+   private String id;
+   private String name;
+   private String school;
+   private String major;
 
-    public String getId() {
-        return id;
-    }
+   /** The timestamp when the user is being created */
+   private String creationTime = new Date(System.currentTimeMillis()).toString();
 
-    public void setId(String id) {
-        this.id = id;
-    }
+   public String getId() {
+      return id;
+   }
 
-	public String getName() {
-		return name;
-	}
+   public void setId(String id) {
+      this.id = id;
+   }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+   public String getName() {
+      return name;
+   }
 
-	public String getMajor() {
-		return major;
-	}
+   public void setName(String name) {
+      this.name = name;
+   }
 
-	public void setMajor(String major) {
-		this.major = major;
-	}
+   public String getSchool() {
+      return school;
+   }
 
-	public String getCreationTime() {
-		return creationTime;
-	}
+   public void setSchool(String school) {
+      this.school = school;
+   }
 
-	public void setCreationTime(String creationTime) {
-		this.creationTime = creationTime;
-	}
+   public String getMajor() {
+      return major;
+   }
+
+   public void setMajor(String major) {
+      this.major = major;
+   }
+
+   public String getCreationTime() {
+      return creationTime;
+   }
+
+   public void setCreationTime(String creationTime) {
+      this.creationTime = creationTime;
+   }
 }

@@ -1,6 +1,6 @@
 _______________________________________                _____________________________
 |            |register|		      |                | 			    |
-|                                     |                |      Register New User     |
+|                                     |                |      Register New User     | //register.html
 |       user: ____________            |                |                            |
 |       pass: ____________            |________________|	user: ________      |
 |                                     |________________|        pass: ________      |
@@ -17,7 +17,7 @@ _______________________________________                _________________________
 		\\//
 ________________________________________                _____________________________
 |				       |		|			    |
-|                                      |		|  Editing CS 480 (Yu Sun)  |
+|                                      |		|  Editing CS 480 (Yu Sun)  | //editclass.html
 |           Lookup Class               |		|                           |
 |                       	       |		|  			    |
 |    Subject   Class#   Instructor     |		|  Field 1: |Name| |Percent||
@@ -38,9 +38,9 @@ ________________________________________                ________________________
                  ||
 		\\//
 ________________________________________
-|				       |
-|                                      |
-|        CS 480 (Yu Sun) Info          |
+|				       |  //when calucate grade needed button is pressed
+|                                      |  //page will refresh with relivant information 
+|        CS 480 (Yu Sun) Info          |  //calcuationpage.html
 |                       	       |
 |    Homework: |20%|                   |
 |    Quizzes:  |20%|                   |
@@ -61,7 +61,7 @@ ________________________________________
 		\\//
 ________________________________________
 |				       |
-|                                      |
+|                                      |  //will not be implemented
 |            What-To-Get               |
 |           			       |
 |          Have     Possible           |

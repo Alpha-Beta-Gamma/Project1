@@ -79,7 +79,7 @@ public class WebController {
       // You can replace this with other string,
       // and run the application locally to check your changes
       // with the URL: http://localhost:8080/
-      return "OK";
+      return "OK!";
    }
 
    @RequestMapping(value = "/cs480/whattoexpect", method = RequestMethod.GET)
@@ -87,19 +87,17 @@ public class WebController {
       // You can replace this with other string,
       // and run the application locally to check your changes
       // with the URL: http://localhost:8080/
-      return "You can expect a grade distribution of: things"
-      		+ "(github upload test API)";
+      return "You can expect a grade distribution of: things" + "(github upload test API)";
    }
-   
+
    @RequestMapping(value = "/cs480/whattoget", method = RequestMethod.GET)
    String whatToGet() {
       // You can replace this with other string,
       // and run the application locally to check your changes
       // with the URL: http://localhost:8080/
-      return "To pass, you need: NaN (You're doomed)"
-      		+ "(github upload test API)";
+      return "To pass, you need: NaN (You're doomed)" + "(github upload test API)";
    }
-   
+
    @RequestMapping(value = "/cs480/whatyouget", method = RequestMethod.GET)
    String whatYouGet() {
       // You can replace this with other string,
@@ -107,6 +105,7 @@ public class WebController {
       // with the URL: http://localhost:8080/
       return "IHEARTPRESTON";
    }
+
    /**
     * This is a simple example of how to use a data manager
     * to retrieve the data and return it as an HTTP response.
@@ -192,6 +191,7 @@ public class WebController {
       modelAndView.addObject("users", listAllUsers());
       return modelAndView;
    }
+
    /**
     * This does something
     * @return
