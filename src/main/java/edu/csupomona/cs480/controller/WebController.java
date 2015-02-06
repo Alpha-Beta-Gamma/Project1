@@ -35,7 +35,7 @@ public class WebController {
 		try {
 	 
 			// need http protocol
-			doc = Jsoup.connect("http://amazon.com").get();
+			doc = Jsoup.connect("http://facebook.com").get();
 	 
 			// get page title
 			String title = doc.title();
