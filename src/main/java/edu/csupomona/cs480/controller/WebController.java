@@ -2,6 +2,12 @@ package edu.csupomona.cs480.controller;
 
 import java.util.List;
 import org.apache.commons.math3.stat.StatUtils;
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +31,32 @@ import edu.csupomona.cs480.data.provider.UserManager;
 
 @RestController
 public class WebController {
-
+	public static void main(String[] args) {
+		Document doc;
+		try {
+	 
+			// need http protocol
+			doc = Jsoup.connect("http://facebook.com").get();
+	 
+			// get page title
+			String title = doc.title();
+			System.out.println("title : " + title);
+	 
+			// get all links
+			Elements links = doc.select("a[href]");
+			for (Element link : links) {
+	 
+				// get the value from href attribute
+				System.out.println("\nlink : " + link.attr("href"));
+				System.out.println("text : " + link.text());
+	 
+			}
+	 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	 
+	  }
    /**
     * When the class instance is annotated with
     * {@link Autowired}, it will be looking for the actual
@@ -62,13 +93,13 @@ public class WebController {
 
    @RequestMapping(value = "/cs480/mathtest", method = RequestMethod.GET)
    String mathTest() {
-	   final double[] testNumbers = new double[100];
+	   double[] testNumbers = new double[100];
 	   double result = 0;
-	   final int j = 5;
+	   double j = 5;
 	   for(int i = 0; i < 100; i++){
 		   testNumbers[i] = i+1;
 	   }
-	   //result = percentile(testNumbers, 5.0); <--Can't find percentile???
+	   //result = percentile(testNumbers, j);<--Can't find percentile??? It's imported!
 	   return Double.toString(result);
    }
 
