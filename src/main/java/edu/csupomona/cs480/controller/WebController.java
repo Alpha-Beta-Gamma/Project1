@@ -1,6 +1,7 @@
 package edu.csupomona.cs480.controller;
 
 import java.util.List;
+import org.apache.commons.math3.stat.StatUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -59,12 +60,16 @@ public class WebController {
       return "You can expect a grade distribution of: things" + "(github upload test API)";
    }
 
-   @RequestMapping(value = "/cs480/whattoget", method = RequestMethod.GET)
-   String whatToGet() {
-      // You can replace this with other string,
-      // and run the application locally to check your changes
-      // with the URL: http://localhost:8080/
-      return "To pass, you need: NaN (You're doomed)" + "(github upload test API)";
+   @RequestMapping(value = "/cs480/mathtest", method = RequestMethod.GET)
+   String mathTest() {
+	   final double[] testNumbers = new double[100];
+	   double result = 0;
+	   final int j = 5;
+	   for(int i = 0; i < 100; i++){
+		   testNumbers[i] = i+1;
+	   }
+	   //result = percentile(testNumbers, 5.0); <--Can't find percentile???
+	   return Double.toString(result);
    }
 
    @RequestMapping(value = "/cs480/whatyouget", method = RequestMethod.GET)

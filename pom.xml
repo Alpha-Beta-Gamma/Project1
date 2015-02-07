@@ -52,9 +52,13 @@
 		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>1.2.0.RELEASE</version>
+            <version>1.2.0.RELEASE</version><!--$NO-MVN-MAN-VER$-->
             <scope>test</scope>
         </dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math3</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -75,4 +79,13 @@
 		</plugins>
 	</build>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-math3</artifactId>
+				<version>3.4.1</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
