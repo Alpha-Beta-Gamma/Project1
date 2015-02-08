@@ -15,7 +15,6 @@ function healthCheck() {
 			});
 }
 
-
 function deleteUser(userId) {
 	$.ajax(
 			{

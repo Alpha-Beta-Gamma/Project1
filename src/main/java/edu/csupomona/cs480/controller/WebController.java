@@ -192,12 +192,22 @@ public class WebController {
     * @param major
     * @return
     */
+
    @RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.POST)
    User updateUser(@PathVariable("userId") String id, @RequestParam("name") String name, @RequestParam(value = "major", required = false) String major) {
       User user = new User();
       user.setId(id);
       user.setMajor(major);
       user.setName(name);
+      userManager.updateUser(user);
+      return user;
+   }
+
+   @RequestMapping(value = "/register_submit/{email}", method = RequestMethod.POST)
+   User updateUser(@PathVariable("email") String email, @RequestParam("pass") String pass) {
+      User user = new User();
+      user.setId(email);
+      user.setPass(pass);
       userManager.updateUser(user);
       return user;
    }

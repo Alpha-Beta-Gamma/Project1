@@ -4,7 +4,6 @@
     <title>CS480 Demo Web Service</title>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>    
     <script src="/js/home-control.js"></script>
-    <link rel="stylesheet" href="C:/Users/Jesse/Documents/Git Projects/Project1/src/main/resources/templates/stylesheet.css">
 </head>
 
 <body>    

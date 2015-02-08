@@ -10,30 +10,29 @@ This file should allow the user to create a user and then return to index.html
 		<head>
 		    <title>Create an Account</title>
 		    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-		    <script src="/js/createaccount-control.js"></script>
+		    <script src="js/createaccount-control.js"></script>
 		 	<link rel="stylesheet" href="stylesheet.css">
 		</head>
-	
+
 		<body onload="healthCheck();">
-			<h1>Demo Project is running:</h1> 
-			<label id="status"></label>
+			<h1>Registration page!</h1> 
 	
-	    <section class="loginform cf">  
-		<form name="login" action="index_submit" method="get" accept-charset="utf-8">  
+
 	    	<ul>  
-	        	<li><label for="usermail">Email</label>  
-	     	    <input type="email" name="usermail" placeholder="yourname@email.com" required></li>
+	        	<li><label for="usermail">Email*</label>  
+	     	    <input type="email" name="usermail" id="email1" placeholder="yourname@email.com" required></li>
 	     	    
-	     	    <li><label for="usermail2">Confirm Email</label>  
-	     	    <input type="email" name="usermail2" placeholder="yourname@email.com" required></li>  
+	     	    <li><label for="usermail2">Confirm Email*</label>  
+	     	    <input type="email" name="usermsdfsdfail2" id="email2" placeholder="yourname@email.com" required></li>  
 	     	    
-	        	<li><label for="password">Password</label>  
-	         	<input type="password" name="password" placeholder="password" required></li>  
-	         	<li>  
-	        <input type="submit" value="Create Account"></li>  
+	        	<li><label for="password">Password*</label>  
+	         	<input type="password" name="password" id="password" placeholder="password" required></li>  
+	         	<li>
+	         	
+	        	<label>Required*</label>  
+	        <input type="submit" onclick="register()" value="Create Account"></li>  
 	    	</ul>  
-		</form>  
-		</section>
+
 	
 		</body>
 	</div>

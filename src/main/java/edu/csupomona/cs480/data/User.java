@@ -12,9 +12,27 @@ public class User {
    private String name;
    private String school;
    private String major;
+   private String email;
+   private String password;
 
    /** The timestamp when the user is being created */
    private String creationTime = new Date(System.currentTimeMillis()).toString();
+
+   public String getEmail() {
+      return email;
+   }
+
+   public void setEmail(String email) {
+      this.email = email;
+   }
+
+   public String getPass() {
+      return password;
+   }
+
+   public void setPass(String password) {
+      this.password = password;
+   }
 
    public String getId() {
       return id;
