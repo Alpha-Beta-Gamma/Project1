@@ -1,14 +1,15 @@
 package edu.csupomona.cs480.controller;
 
 import java.util.List;
+
 import org.apache.commons.math3.stat.StatUtils;
+
 import java.io.IOException;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.google.common.base.Optional;
 
 import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.data.User;
@@ -31,32 +34,39 @@ import edu.csupomona.cs480.data.provider.UserManager;
 
 @RestController
 public class WebController {
-	public static void main(String[] args) {
-		Document doc;
-		try {
-	 
-			// need http protocol
-			doc = Jsoup.connect("http://facebook.com").get();
-	 
-			// get page title
-			String title = doc.title();
-			System.out.println("title : " + title);
-	 
-			// get all links
-			Elements links = doc.select("a[href]");
-			for (Element link : links) {
-	 
-				// get the value from href attribute
-				System.out.println("\nlink : " + link.attr("href"));
-				System.out.println("text : " + link.text());
-	 
-			}
-	 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	 
-	  }
+   /*// 
+    * 
+    * JESSES CODE for assignment 5 
+    *  moved down to jsoup method
+    *  because it broke mvn compile by having 2 mains
+    *  
+   public static void main(String[] args) {
+   	Document doc;
+   	try {
+    
+   		// need http protocol
+   		doc = Jsoup.connect("http://facebook.com").get();
+    
+   		// get page title
+   		String title = doc.title();
+   		System.out.println("title : " + title);
+    
+   		// get all links
+   		Elements links = doc.select("a[href]");
+   		for (Element link : links) {
+    
+   			// get the value from href attribute
+   			System.out.println("\nlink : " + link.attr("href"));
+   			System.out.println("text : " + link.text());
+    
+   		}
+    
+   	} catch (IOException e) {
+   		e.printStackTrace();
+   	}
+    
+     }
+   */
    /**
     * When the class instance is annotated with
     * {@link Autowired}, it will be looking for the actual
@@ -83,6 +93,43 @@ public class WebController {
       return "OK!";
    }
 
+   @RequestMapping(value = "/cs480/guava", method = RequestMethod.GET)
+   String guava() {
+
+      Optional<Integer> possible = Optional.of(5);
+      possible.isPresent(); // returns true
+      int out = possible.get(); // returns 5
+
+      return "this uses guava and should be five: " + out;
+   }
+
+   @RequestMapping(value = "/cs480/jsoup", method = RequestMethod.GET)
+   void jsoup() {
+      Document doc;
+      try {
+
+         // need http protocol
+         doc = Jsoup.connect("http://facebook.com").get();
+
+         // get page title
+         String title = doc.title();
+         System.out.println("title : " + title);
+
+         // get all links
+         Elements links = doc.select("a[href]");
+         for (Element link : links) {
+
+            // get the value from href attribute
+            System.out.println("\nlink : " + link.attr("href"));
+            System.out.println("text : " + link.text());
+
+         }
+
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+   }
+
    @RequestMapping(value = "/cs480/whattoexpect", method = RequestMethod.GET)
    String whatToExpect() {
       // You can replace this with other string,
@@ -93,14 +140,14 @@ public class WebController {
 
    @RequestMapping(value = "/cs480/mathtest", method = RequestMethod.GET)
    String mathTest() {
-	   double[] testNumbers = new double[100];
-	   double result = 0;
-	   double j = 5;
-	   for(int i = 0; i < 100; i++){
-		   testNumbers[i] = i+1;
-	   }
-	   //result = percentile(testNumbers, j);<--Can't find percentile??? It's imported!
-	   return Double.toString(result);
+      double[] testNumbers = new double[100];
+      double result = 0;
+      double j = 5;
+      for (int i = 0; i < 100; i++) {
+         testNumbers[i] = i + 1;
+      }
+      //result = percentile(testNumbers, j);<--Can't find percentile??? It's imported!
+      return Double.toString(result);
    }
 
    @RequestMapping(value = "/cs480/whatyouget", method = RequestMethod.GET)

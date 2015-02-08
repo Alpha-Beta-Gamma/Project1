@@ -11,14 +11,11 @@ This file should display a way to...
 -->
 
 <html>
-
 <head>
-
   <meta charset="UTF-8">
-
   <title>CodePen - Random Login Form</title>
-
-    <style>
+  <style>
+  
 @import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 
@@ -161,11 +158,24 @@ body{
 }
 </style>
 
-    <script src="js/prefixfree.min.js"></script>
-	<link rel="stylesheet" href="stylesheet.css">
+<script src="js/prefixfree.min.js"></script>
+<link rel="stylesheet" href="stylesheet.css">
+	
 </head>
 
 <body>
+
+<script>
+	function attemptlogin() {
+		//TODO maybe need to be written elsewhere, must send form data on click
+	}
+	function gotoregister() {
+    	window.location.href = 'register.html';
+	}
+	function gotoclasslookup() {
+    	window.location.href = 'classlookup.html';
+	}
+</script>
 
   <div class="body"></div>
 		<div class="grad"></div>
@@ -176,12 +186,11 @@ body{
 		<div class="login">
 				<input type="text" placeholder="email" name="usermail"><br>
 				<input type="password" placeholder="password" name="password"><br>
-				<input type="button" value="Login">
-				<input type="button" value="Register">
-				<input type="button" value="Continue w/o Login">
+				<input type="button" value="Login" onclick="attemptlogin()">
+				<input type="button" value="Register" onclick="gotoregister()">
+				<input type="button" value="Continue w/o Login" onclick="gotoclasslookup()">
 		</div>
-
-
+		
 </body>
 
 </html>
