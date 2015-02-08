@@ -142,11 +142,10 @@ public class WebController {
    String mathTest() {
       double[] testNumbers = new double[100];
       double result = 0;
-      double j = 5;
       for (int i = 0; i < 100; i++) {
          testNumbers[i] = i + 1;
       }
-      //result = percentile(testNumbers, j);<--Can't find percentile??? It's imported!
+      //result = percentile(testNumbers, 5.0);<--Can't find percentile??? It's imported!
       return Double.toString(result);
    }
 
