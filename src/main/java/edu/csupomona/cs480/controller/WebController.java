@@ -2,9 +2,12 @@ package edu.csupomona.cs480.controller;
 
 import java.util.List;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.math3.stat.StatUtils;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -92,7 +95,18 @@ public class WebController {
       // with the URL: http://localhost:8080/
       return "OK!";
    }
-
+   
+//for commonsIO this reads and prints bytes from a url
+   @RequestMapping(value = "/cs480/commonsIO", method = RequestMethod.GET)
+   void commons() throws IOException{
+	   InputStream in = new URL( "http://cs480-projects.github.io/teams/alphabetagamma.html" ).openStream();
+	   try {
+	     System.out.println( IOUtils.toString( in ) );
+	   } finally {
+	     IOUtils.closeQuietly(in);
+	   }
+   }
+   
    @RequestMapping(value = "/cs480/guava", method = RequestMethod.GET)
    String guava() {
 
