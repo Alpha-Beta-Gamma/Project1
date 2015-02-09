@@ -40,9 +40,12 @@ public class Course {
    public void setProfessor(String professor) {
       this.professor = professor;
    }
-
-   public static void main(String[] args) {
-      //test
-      distribution.put("Test", 1);
+   /*
+    adds a "Source" of grade points, for example:
+    To add Homework: 20%, call
+    [Course instance].addSource("Homework", 20)
+    */
+   public void addSource(String name, int percent){
+	   distribution.put(name, percent);
    }
 }
