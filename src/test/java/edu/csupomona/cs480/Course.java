@@ -1,6 +1,7 @@
 package edu.csupomona.cs480;
 
 import java.util.*;
+//import java.lang.Exception;//might be needed
 
 public class Course {
    String name;
@@ -8,11 +9,18 @@ public class Course {
    String professor;
    static HashMap<String, Integer> distribution;
 
-   public Course(String name, int number, String professor) {
+   public Course(String name, int number, String professor,
+      HashMap<String, Integer> dist) {
       this.name = name;
       this.number = number;
       this.professor = professor;
-      distribution = new HashMap<String, Integer>();
+	  if(checkGoodPercent(dist)){
+	       distribution = dist;
+	  }
+	  else{
+	       //inform updater of malformed distribution, test below
+	       System.out.println("DISTRIBUTION > 100!");
+	  }
    }
 
    //getter methods
@@ -41,11 +49,47 @@ public class Course {
       this.professor = professor;
    }
    /*
-    adds a "Source" of grade points, for example:
-    To add Homework: 20%, call
-    [Course instance].addSource("Homework", 20)
-    */
-   public void addSource(String name, int percent){
-	   distribution.put(name, percent);
+    Returns the current distribution -- to change grade distribution,
+      use getDistribution(), change grade distribution, then call
+      changeDistribution(newDistribution);
+      !!Make sure total percentages add to up 100!!
+   */
+   public HashMap<String, Integer> getDistribution(){
+	   return distribution;
    }
+   /*
+    Changes the old grade distribution to a given grade distribution
+    */
+   public void changeDistribution(HashMap<String, Integer> changedDistribution){
+	  if(checkGoodPercent(changedDistribution)){
+               distribution = changedDistribution;
+	  }
+	  else{
+               //inform updater of malformed distribution, test below
+               System.out.println("DISTRIBUTION > 100!");
+	  }
+   }
+   
+   public boolean checkGoodPercent(HashMap<String, Integer> test){
+        int totalPercent = 0;
+        for(int value : test.values()){
+                totalPercent += value;
+        }
+        return (totalPercent == 100);
+   }
+   /*
+    returns the characteristics of a class in the form:
+      <Class Name> | <Class Number> | <Professor> |
+      {distName1=distNum1, distName2=distNum2, ...}
+      name, number, professor and distribution set 
+      are delimited by the "|" vertical bar symbol
+    */
+   public String toString(){
+	   String strungClass = new String(name + " | " + number + " | "
+                   + professor + " | " + "\n" + distribution.toString());
+           return strungClass;
+   }
+   
+   
 }
+

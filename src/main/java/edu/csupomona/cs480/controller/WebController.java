@@ -159,7 +159,7 @@ public class WebController {
       for (int i = 0; i < 100; i++) {
          testNumbers[i] = i + 1;
       }
-      //result = percentile(testNumbers, 5.0);<--Can't find percentile??? It's imported!
+      result = StatUtils.percentile(testNumbers, 5.0);
       return Double.toString(result);
    }
 
