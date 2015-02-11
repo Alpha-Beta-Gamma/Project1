@@ -14,6 +14,7 @@ public class Course {
       this.name = name;
       this.number = number;
       this.professor = professor;
+      distribution = dist;
    }
 
    //getter methods
