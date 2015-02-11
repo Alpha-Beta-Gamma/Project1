@@ -14,13 +14,6 @@ public class Course {
       this.name = name;
       this.number = number;
       this.professor = professor;
-	  if(checkGoodPercent(dist)){
-	       distribution = dist;
-	  }
-	  else{
-	       //inform updater of malformed distribution, test below
-	       System.out.println("DISTRIBUTION > 100!");
-	  }
    }
 
    //getter methods
@@ -61,15 +54,12 @@ public class Course {
     Changes the old grade distribution to a given grade distribution
     */
    public void changeDistribution(HashMap<String, Integer> changedDistribution){
-	  if(checkGoodPercent(changedDistribution)){
-               distribution = changedDistribution;
-	  }
-	  else{
-               //inform updater of malformed distribution, test below
-               System.out.println("DISTRIBUTION > 100!");
-	  }
+       distribution = changedDistribution;
    }
-   
+   /*
+    Probably won't use checkGoodPercent, input verification to be
+      handled elsewhere.
+    */
    public boolean checkGoodPercent(HashMap<String, Integer> test){
         int totalPercent = 0;
         for(int value : test.values()){
