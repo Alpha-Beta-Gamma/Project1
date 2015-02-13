@@ -8,9 +8,8 @@
 
 <body>    
     <div style="color:#0000FF" align="center">
-        <h1>Welcome to our cool website! </h1>
+        <h1>Welcome to the user debug area</h1>
         <h1>The key tools and techniques used include: </h1>
-        <h1>TURN BLUE </h1>
         <ul>
             <li>HTML - Obviously</li>
             <li><a href="http://freemarker.org/">FreeMarker</a></li>
@@ -28,8 +27,10 @@
                 <tr>
                     <td>ID</td>
                     <td>Name</td> 
-                    <td>Major</td> 
+                    <td>Major</td>
+                    <td>Email</td> 
                     <td>Creation Time</td>
+                    <td>Password</td> 
                     <td>Delete</td>
                 </tr>
                 <#list users as user>
@@ -37,6 +38,8 @@
                             <td>${user.id}</td>
                             <td>${user.name}</td>
                             <td>${user.major}</td>
+                            <td>${user.email}</td>
+                            <td>${user.creationTime}</td>
                             <td>${user.creationTime}</td>
                             <td><button onclick="deleteUser('${user.id}')">Delete</button></td>
                         </tr>
@@ -47,19 +50,23 @@
         <hr>
         
         <div>
-            <label>Add User</label>
+            <label>Add User - DO NOT ADD A USER WITHOUT ALL FIELDS FILLED OUT!</label>
             <table border="1">
                 <tr>
                     <td>ID</td>
                     <td>Name</td> 
-                    <td>Major</td>                     
+                    <td>Major</td>
+                    <td>Email</td> 
+                    <td>Password</td>              
                     <td>Add</td>
                 </tr>                
                 <tr>
                     <td><input type="text" id="input_id"></td>
                     <td><input type="text" id="input_name"></td>
-                    <td><input type="text" id="input_major"></td>                    
-                    <td><button onclick="addUser()">Add</button></td>
+                    <td><input type="text" id="input_major"></td>
+                    <td><input type="text" id="input_email"></td>
+                    <td><input type="text" id="input_password"></td>         
+                    <td><button onclick="registermanual()">Add</button></td>
                 </tr>
             </table>
         </div>

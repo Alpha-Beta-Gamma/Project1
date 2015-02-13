@@ -9,7 +9,7 @@ This file should allow the user to create a user and then return to index.html
 <link rel="icon" type="image/png" href="images/favicon.ico">
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Random Login Form</title>
+  <title>GradeBane - Register</title>
   <style>
   
 @import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
@@ -177,10 +177,10 @@ body{
 		</div>
 		<br>
 		<div class="login">
-				<input type="text" placeholder="email" name="usermail"><br>
-				<input type="text" placeholder="confirm email" name="cusermail"><br>
-				<input type="password" placeholder="password" name="password"><br>
-				<input type="button" value="Create Account">
+				<input type="text" placeholder="email" name="usermail" id="email" required><br>
+				<input type="text" placeholder="confirm email" name="cusermail" id="email2" required><br>
+				<input type="password" id="password" placeholder="password" name="password" required><br>
+				<input type="button" onclick="register()" value="Create Account">
 		</div>
 
 </body>

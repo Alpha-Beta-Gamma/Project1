@@ -37,39 +37,6 @@ import edu.csupomona.cs480.data.provider.UserManager;
 
 @RestController
 public class WebController {
-   /*// 
-    * 
-    * JESSES CODE for assignment 5 
-    *  moved down to jsoup method
-    *  because it broke mvn compile by having 2 mains
-    *  
-   public static void main(String[] args) {
-   	Document doc;
-   	try {
-    
-   		// need http protocol
-   		doc = Jsoup.connect("http://facebook.com").get();
-    
-   		// get page title
-   		String title = doc.title();
-   		System.out.println("title : " + title);
-    
-   		// get all links
-   		Elements links = doc.select("a[href]");
-   		for (Element link : links) {
-    
-   			// get the value from href attribute
-   			System.out.println("\nlink : " + link.attr("href"));
-   			System.out.println("text : " + link.text());
-    
-   		}
-    
-   	} catch (IOException e) {
-   		e.printStackTrace();
-   	}
-    
-     }
-   */
    /**
     * When the class instance is annotated with
     * {@link Autowired}, it will be looking for the actual
@@ -95,18 +62,18 @@ public class WebController {
       // with the URL: http://localhost:8080/
       return "OK!";
    }
-   
-//for commonsIO this reads and prints bytes from a url
+
+   //for commonsIO this reads and prints bytes from a url
    @RequestMapping(value = "/cs480/commonsIO", method = RequestMethod.GET)
-   void commons() throws IOException{
-	   InputStream in = new URL( "http://cs480-projects.github.io/teams/alphabetagamma.html" ).openStream();
-	   try {
-	     System.out.println( IOUtils.toString( in ) );
-	   } finally {
-	     IOUtils.closeQuietly(in);
-	   }
+   void commons() throws IOException {
+      InputStream in = new URL("http://cs480-projects.github.io/teams/alphabetagamma.html").openStream();
+      try {
+         System.out.println(IOUtils.toString(in));
+      } finally {
+         IOUtils.closeQuietly(in);
+      }
    }
-   
+
    @RequestMapping(value = "/cs480/guava", method = RequestMethod.GET)
    String guava() {
 
@@ -205,22 +172,28 @@ public class WebController {
     * @param major
     * @return
     */
+   /*
+      @RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.POST)
+      User updateUser(@PathVariable("userId") String id, @RequestParam("name") String name, @RequestParam(value = "major", required = false) String major) {
+         System.out.println("DEBUG56");
+         User user = new User();
+         user.setId(id);
+         user.setMajor(major);
+         user.setName(name);
+         userManager.updateUser(user);
+         return user;
+      }
+      */
 
-   @RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.POST)
-   User updateUser(@PathVariable("userId") String id, @RequestParam("name") String name, @RequestParam(value = "major", required = false) String major) {
+   @RequestMapping(value = "/register_submit/{id}", method = RequestMethod.POST)
+   User updateUser(@PathVariable("id") String id, @RequestParam("email") String email, @RequestParam("password") String password) {
+      System.out.println("User registered...");
       User user = new User();
       user.setId(id);
-      user.setMajor(major);
-      user.setName(name);
-      userManager.updateUser(user);
-      return user;
-   }
-
-   @RequestMapping(value = "/register_submit/{email}", method = RequestMethod.POST)
-   User updateUser(@PathVariable("email") String email, @RequestParam("pass") String pass) {
-      User user = new User();
-      user.setId(email);
-      user.setPass(pass);
+      user.setName("Default");
+      user.setMajor("Default");
+      user.setEmail(email);
+      user.setPass(password);
       userManager.updateUser(user);
       return user;
    }

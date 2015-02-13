@@ -103,3 +103,33 @@ function getUser(userId) {
 		alert("Invalid user Id");
 	}
 }
+
+function registermanual() {
+
+	var userId = $('#input_id').val();
+	var userName = $('#input_name').val();
+	var userMajor = $('#input_major').val();
+	var email = $('#input_email').val();
+	var password = $('#input_password').val();
+	
+	if(password.length < 6) {
+		alert("Password must be longer then 6 characters.");
+	} else {
+
+		$.ajax(
+				{
+					type : "POST",
+					url  : "/register_submit/" + userId,
+					data : {
+						"email" : email,
+						"password" : password
+					},
+					success : function(result) {
+						location.reload();
+					},
+					error: function (jqXHR, exception) {
+						alert("Failed to add the user. Please check the inputs.");
+					}
+				});
+	} 
+}
