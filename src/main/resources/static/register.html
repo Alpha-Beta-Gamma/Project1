@@ -177,10 +177,11 @@ body{
 		</div>
 		<br>
 		<div class="login">
-				<input type="text" placeholder="email" name="usermail" id="email" required><br>
-				<input type="text" placeholder="confirm email" name="cusermail" id="email2" required><br>
-				<input type="password" id="password" placeholder="password" name="password" required><br>
-				<input type="button" onclick="register()" value="Create Account">
+				<input type="text" onkeydown="if (event.keyCode == 13) document.getElementById('regbtn').click()" placeholder="email" name="usermail" id="email" required><br>
+				<input type="text" onkeydown="if (event.keyCode == 13) document.getElementById('regbtn').click()" placeholder="confirm email" name="cusermail" id="email2" required><br>
+				<input type="password" onkeydown="if (event.keyCode == 13) document.getElementById('regbtn').click()" id="password" placeholder="password" name="password" required><br>
+				<input type="button" onclick="register()" id="regbtn" value="Create Account">
+				<input type="button" onclick="window.location.href = '/index.html'" id="cnlbtn" value="Cancel">
 		</div>
 
 </body>

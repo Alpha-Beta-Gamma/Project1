@@ -12,8 +12,11 @@ This file should display a way to...
 
 <html>
 <link rel="icon" type="image/png" href="images/favicon.ico">
+		 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		 <script src="js/index-control.js"></script>
 <head>
   <meta charset="UTF-8">
+
   <title>GradeBane - Welcome</title>
   <style>
   
@@ -166,18 +169,6 @@ body{
 
 <body>
 
-<script>
-	function attemptlogin() {
-		//TODO maybe need to be written elsewhere, must send form data on click
-	}
-	function gotoregister() {
-    	window.location.href = 'register.html';
-	}
-	function gotoclasslookup() {
-    	window.location.href = 'classlookup.html';
-	}
-</script>
-
   <div class="body"></div>
 		<div class="grad"></div>
 		<div class="header">
@@ -185,9 +176,9 @@ body{
 		</div>
 		<br>
 		<div class="login">
-				<input type="text" placeholder="email" name="usermail"><br>
-				<input type="password" placeholder="password" name="password"><br>
-				<input type="button" value="Login" onclick="attemptlogin()">
+				<input type="text" id="email" placeholder="email" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" name="usermail"><br>
+				<input type="password" id="password" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" placeholder="password" name="password"><br>
+				<input type="button" value="Login" id="login" onclick="attemptlogin()">
 				<input type="button" value="Register" onclick="gotoregister()">
 				<input type="button" value="Continue Anonymously" onclick="gotoclasslookup()">
 		</div>
