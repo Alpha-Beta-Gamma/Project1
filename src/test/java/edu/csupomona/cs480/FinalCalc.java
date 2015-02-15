@@ -19,7 +19,7 @@ public class FinalCalc {
 	   * obtained would contain 4, as it would not include final.
 	 */
 	public static double Calculate(HashMap<String, Integer> distribution,
-	                        HashMap<String, Integer> obtained, int goal)
+	                        HashMap<String, Integer> obtained, double goal)
 	{
 	    double gradeNeeded = 0;
 	    double totalPercent = 0;//Will usually be 100

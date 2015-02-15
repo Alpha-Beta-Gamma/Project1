@@ -41,4 +41,18 @@ public class AppTest extends TestCase {
       assertEquals(c.calculateMissingValue(scores, outOf), 35.0, 0.0);
 
    }
+   
+   public void testFinalGradeNeeded() {
+	   HashMap<String, Integer> possible = new HashMap<String, Integer>();
+	   HashMap<String, Integer> got = new HashMap<String, Integer>();
+	   possible.put("Homework", 20);
+	   possible.put("Quizzes", 30);
+	   possible.put("Midterm", 25);
+	   possible.put("Final", 25);
+	   got.put("Homework", 20);
+	   got.put("Quizzes", 30);
+	   got.put("Midterm",  25);
+	   
+	   assertEquals(FinalCalc.Calculate(possible, got, 87.5), 50, 0.0);
+   }
 }
