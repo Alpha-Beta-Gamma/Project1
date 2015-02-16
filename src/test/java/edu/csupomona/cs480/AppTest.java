@@ -1,7 +1,7 @@
 package edu.csupomona.cs480;
 
 import java.util.HashMap;
-
+import java.util.*;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -54,5 +54,12 @@ public class AppTest extends TestCase {
 	   got.put("Midterm",  25);
 	   
 	   assertEquals(FinalCalc.Calculate(possible, got, 87.5), 50, 0.0);
+   }
+   
+   public void testProfessor() {
+	   Course d = new Course("CS 480", 48043, "Saroka", new HashMap<String, Integer>());
+	   d.setProfessor("Sun");
+	   
+	   assertEquals("Sun", d.getProfessor());
    }
 }
