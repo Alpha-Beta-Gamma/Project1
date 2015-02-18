@@ -56,6 +56,22 @@ public class AppTest extends TestCase {
 	   assertEquals(FinalCalc.Calculate(possible, got, 87.5), 50, 0.0);
    }
    
+   public void testFinalPoints(){
+	   HashMap<String, Integer> possible = new HashMap<String, Integer>();
+	   HashMap<String, Integer> got = new HashMap<String, Integer>();
+	   possible.put("Homework", 100);
+	   possible.put("Quizzes", 100);
+	   possible.put("Midterm", 150);
+	   possible.put("Final", 200);
+	   got.put("Homework", 100);
+	   got.put("Quizzes", 100);
+	   got.put("Midterm", 150);
+	   Course testCourse = new Course("Test", 101, "Joh Doe", possible, false);
+	   assertEquals(testCourse.finalCalculate(got, 100), 100, 0.1);
+	   
+	   
+   }
+   
    public void testProfessor() {
 	   Course d = new Course("CS 480", 48043, "Saroka", new HashMap<String, Integer>());
 	   d.setProfessor("Sun");

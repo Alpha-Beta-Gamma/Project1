@@ -9,14 +9,25 @@ public class Course {
    int number;
    String professor;
    static HashMap<String, Integer> distribution;
+   Boolean percentBased;
 
    public Course(String name, int number, String professor, HashMap<String, Integer> dist) {
       this.name = name;
       this.number = number;
       this.professor = professor;
       distribution = dist;
+      this.percentBased = true;
    }
 
+   public Course(String name, int number, String professor,
+	   HashMap<String, Integer> dist, Boolean percentBased) {
+	   this.name = name;
+	   this.number = number;
+	   this.professor = professor;
+	   this.distribution = dist;
+	   this.percentBased = percentBased;
+   }
+   
    //getter methods
    public String getName() {
       return name;
@@ -85,6 +96,88 @@ public class Course {
 
       return outOf - total;
    }
+	/*
+	 In this method, the output is the grade needed on the final
+	   that would cause the entire class grade to reach goal.  It reads
+	   the percentages given to it by distribution, and the percentages
+	   obtained by the user in the class in obtained, and then calculates
+	   what percent of the final grade needs to be earned to reach the
+	   goal percentage.  Calculate will return -1 if the goal is not
+	   reachable given a max grade on the final.
+	   * Note: obtained should not include a final entry, as this is what
+	   * is being calculated.  So if distribution contained 5 elements,
+	   * obtained would contain 4, as it would not include final.
+	 */
+	public double finalCalculate(HashMap<String, Integer> obtained, double goal)
+	{
+	    double gradeNeeded = 0;
+	    double totalPercent = 0;//Will usually be 100
+	    double totalEarned = 0;//Sum of all grades before final
+	    double finalWeight = 0;//Percent contribution of final to class grade
+	    
+	    if(!percentBased){
+	    	double totalPoints = 0;
+	    	double obtainedPoints = 0;
+	        for (int value : distribution.values()){
+	           totalPoints += value;//find out how many points class is out of
+	        }
+	        for(int value : obtained.values()){
+	        	obtainedPoints += value;//find out how many points were obtained
+	        }
+	        finalWeight = ((distribution.get("Final")/totalPoints) * 100);//find out what percent of the class the final is
+	        totalPercent = 100 - finalWeight;//remove final weight from pre-calculation total
+	        totalEarned = ((obtainedPoints/totalPoints) * 100);//find total percent earned
+            //System.out.println("Final Weight: " + finalWeight);
+            //System.out.println("Earned: " + totalEarned);
+            //System.out.println("Goal: " + goal);
+	    }
+	    else{
+		    for(int value : distribution.values()){
+		        totalPercent += value;
+		    }
+		    /*
+		     We will now remove final from the total percent calculation, as
+		       this is what is being calculated.
+		     */
+		    totalPercent -= distribution.get("Final");
+		    //System.out.println("Total Percent: " + totalPercent);-------------------
+		    for(int value : obtained.values()){
+		        totalEarned += value;
+		    }
+		    finalWeight = distribution.get("Final");
+	    }
+	    //System.out.println("Final Weight: " + finalWeight);
+	    //System.out.println("Earned: " + totalEarned);
+	    //System.out.println("Goal: " + goal);
+	    /*
+	     Here, the total - goal is subtracted from the total percent to lower
+	       the grade needed on the final.  Without this offset, the grade
+	       needed on the final would be the grade needed to get a perfect
+	       score in the class, and would therefore be very difficult to obtain.
+	       * An example: Total class percent = 100% : goal percent = 75%
+	       * total earned = 70%.  The calculation would yield
+	       * 100% - (100% - 75%) - 70% = 100% - 25% - 70% = 5%
+	       * so the method would return 5, as that is the percent needed
+	       * of the final to receive the goal percent.  It will then calculate
+	       * what percent that will be for the final.
+	     */
+	    gradeNeeded = (totalPercent - (totalPercent - goal)) - totalEarned;
+	    if(gradeNeeded > finalWeight){//goal unobtainable
+	        return (Integer)(-1);
+	    }
+	    if(gradeNeeded < 0){//goal already met
+	    	return (Integer)0;
+	    }
+	    /*
+	     The calculation below makes gradeNeeded be the percent needed on the
+	       final, as opposed to the current value of percent of the class
+	       needed.
+	     */
+	    gradeNeeded *= (100 / finalWeight);
+	    
+	    return gradeNeeded;
+	}
+
 
    /*
     returns the characteristics of a class in the form:
