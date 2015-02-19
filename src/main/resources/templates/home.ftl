@@ -38,7 +38,7 @@
                             <td>${user.id}</td>
                             <td>${user.name}</td>
                             <td>${user.major}</td>
-                            <td>${user.email}</td>
+                            <td>${user.creationTime}</td>
                             <td>${user.creationTime}</td>
                             <td>${user.creationTime}</td>
                             <td><button onclick="deleteUser('${user.id}')">Delete</button></td>

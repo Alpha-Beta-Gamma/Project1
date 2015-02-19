@@ -33,8 +33,6 @@ function deleteUser(userId) {
 
 function addUser() {
 	
-	deleteUser('sss');
-
 	var userId = $('#input_id').val();
 	var userName = $('#input_name').val();
 	var userMajor = $('#input_major').val();
