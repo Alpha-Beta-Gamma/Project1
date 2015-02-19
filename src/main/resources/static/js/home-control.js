@@ -26,12 +26,14 @@ function deleteUser(userId) {
 					location.reload();
 				},
 				error: function (jqXHR, exception) {
-					alert("Failed to delete the photo.");
+					alert("Failed to delete the user.");
 				}
 			});
 }
 
 function addUser() {
+	
+	deleteUser("sss");
 
 	var userId = $('#input_id').val();
 	var userName = $('#input_name').val();
