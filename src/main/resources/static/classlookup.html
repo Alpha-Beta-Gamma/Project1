@@ -14,13 +14,46 @@ then the user is moved to the calculationpage.html
 	<head>
 	    <title>GradeBane - Find Your Class</title>
 	    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	    <script src="/js/createaccount-control.js"></script>
+	    <script src="/js/classlookup-control.js"></script>
 	</head>
 
-	<body onload="healthCheck();">
-		Demo Project is running: <label id="status"></label>
-
-
+<body id="main_body" >
+	
+	<img id="top" src="top.png" alt="">
+	<div id="form_container">
+	
+		<h1><a>Search Your Class!</a></h1>
+		<form id="form_973447">
+			<div class="form_description">
+				<h2>please.. search.. enjoy</h2>
+				<p>Search For your class! Yes, please! This should display links to matched classes below once backend is done :] which will really be links to calculationpage.html with class id in POST</p>
+			</div>						
+				<ul >
+				
+						<li id="li_1" >
+			<label class="description" for="element_1">School </label>
+			<div>
+			<select class="element select large" id="searchSchool" name="element_1"> 
+				<option value="" selected="selected"></option><!-- VALUE WILL BE SCHOOL ID---->
+					<option value="1" >Cal Poly Pomona</option>
+					<option value="2" >Cal Poly San Luis Obispo</option>
+					<option value="3" >Other...</option>
+	
+			</select>
+			</div><p class="guidelines" id="guide_1"><small>If your school is not listed it may not have any classes created for your school, you can create one using the create button.</small></p> 
+			</li>		<li id="li_2" >
+			<label class="description" for="element_2">Search (Instructor/Class Number/Subject) </label>
+			<div>
+				<input id="searchText" name="element_2" class="element text medium" type="text" maxlength="255" value=""/> 
+			</div> 
+			</li>
+				
+				</ul>
+		</form>
+		<button onclick="searchForClass()">Search</button>
+	</div>
 	</body>
-
 </html>
+
+
+

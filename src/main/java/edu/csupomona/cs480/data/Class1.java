@@ -10,6 +10,7 @@ public class Class1 {
    private String school; //ex "Cal Poly Pomona"
    private String subject; //ex. CS, Art, Biology
    private String uniqueNumber; //should be unique number per school ex our class is 14403, needs to be string for some schools with letters maybe?
+   private String instructor;
 
    //private String sectionNumber; //not sure if necessary 
 
@@ -62,6 +63,14 @@ public class Class1 {
 
    public void setCreationTime(String creationTime) {
       this.creationTime = creationTime;
+   }
+
+   public String getInstructor() {
+      return instructor;
+   }
+
+   public void setInstructor(String instructor) {
+      this.instructor = instructor;
    }
 
 }
