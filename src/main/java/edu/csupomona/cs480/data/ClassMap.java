@@ -14,6 +14,6 @@ import java.util.HashMap;
  */
 
 @SuppressWarnings("serial")
-public class ClassMap extends HashMap<String, Class> {
+public class ClassMap extends HashMap<String, Class1> {
 
 }

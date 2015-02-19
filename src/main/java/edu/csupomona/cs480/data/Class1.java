@@ -2,7 +2,7 @@ package edu.csupomona.cs480.data;
 
 import java.util.Date;
 
-public class Class {
+public class Class1 {
 
    /** The unique user Id */
    private String id; //randomly generated on class creation. main purpose is for access from user saved classes
