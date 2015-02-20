@@ -212,7 +212,7 @@ public class WebController {
       user.setPass(password);
       userManager.updateUser(user);
 
-      //ADDED CODE-------------------------------------------------------------------
+      /*/ADDED CODE-------------------------------------------------------------------
       Class1 clas = new Class1();
       clas.setId("1_14403");
       clas.setInstructor("Yu Sun");
@@ -222,6 +222,7 @@ public class WebController {
       clas.setUniqueNumber("14403"); //can be found on broncodirect
       classManager.updateClass(clas);
       //DELETST STUFF HERE LATER------------------------------------------------------
+      */
 
       return user;
    }
