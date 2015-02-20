@@ -81,29 +81,6 @@ function getUser(userId) {
 	}
 }
 
-function getUser(userId) {
-	var userId = $('#query_id').val();
-	if (userId) {
-		$.ajax(
-				{
-					type : "GET",
-					url  : "/cs480/user/" + userId,
-					data : {
-					},
-					success : function(result) {
-						$('#result_id').text(result.id);
-						$('#result_name').text(result.name);
-						$('#result_major').text(result.major);
-					},
-					error: function (jqXHR, exception) {
-						alert("Failed to get the user.");
-					}
-				});
-	} else {
-		alert("Invalid user Id");
-	}
-}
-
 function registermanual() {
 
 	var userId = $('#input_id').val();

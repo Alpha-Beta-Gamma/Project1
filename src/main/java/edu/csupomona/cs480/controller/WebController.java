@@ -24,7 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.common.base.Optional;
 
 import edu.csupomona.cs480.App;
+import edu.csupomona.cs480.data.Class1;
 import edu.csupomona.cs480.data.User;
+import edu.csupomona.cs480.data.provider.ClassManager;
 import edu.csupomona.cs480.data.provider.UserManager;
 
 /**
@@ -47,6 +49,9 @@ public class WebController {
     */
    @Autowired
    private UserManager userManager;
+
+   @Autowired
+   private ClassManager classManager;
 
    /**
     * This is a simple example of how the HTTP API works.
@@ -132,9 +137,6 @@ public class WebController {
 
    @RequestMapping(value = "/cs480/whatyouget", method = RequestMethod.GET)
    String whatYouGet() {
-      // You can replace this with other string,
-      // and run the application locally to check your changes
-      // with the URL: http://localhost:8080/
       return "IHEARTPRESTON";
    }
 
@@ -152,6 +154,20 @@ public class WebController {
    User getUser(@PathVariable("userId") String userId) {
       User user = userManager.getUser(userId);
       return user;
+   }
+
+   @RequestMapping(value = "/classes/{classId}", method = RequestMethod.GET)
+   Class1 getClass(@PathVariable("classId") String classId) {
+      //System.out.println(uniqueNumber);
+      Class1 clas = classManager.getClass(classId);
+      /*
+      //System.out.println(uniqueNumber);
+      if (clas != null)
+         System.out.println(clas.getName());
+      else
+         System.out.println("WAS NULL!");
+      */
+      return clas;
    }
 
    /**
@@ -195,6 +211,18 @@ public class WebController {
       user.setEmail(email);
       user.setPass(password);
       userManager.updateUser(user);
+
+      //ADDED CODE-------------------------------------------------------------------
+      Class1 clas = new Class1();
+      clas.setId("1_14403");
+      clas.setInstructor("Yu Sun");
+      clas.setName("CS 480 Software Engineering");
+      clas.setSchool("1");
+      clas.setSubject("CS");
+      clas.setUniqueNumber("14403"); //can be found on broncodirect
+      classManager.updateClass(clas);
+      //DELETST STUFF HERE LATER------------------------------------------------------
+
       return user;
    }
 
@@ -216,6 +244,11 @@ public class WebController {
    @RequestMapping(value = "/cs480/users/list", method = RequestMethod.GET)
    List<User> listAllUsers() {
       return userManager.listAllUsers();
+   }
+
+   @RequestMapping(value = "/classes/list", method = RequestMethod.GET)
+   List<Class1> listAllClasses() {
+      return classManager.listAllClasses();
    }
 
    /**

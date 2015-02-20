@@ -5,7 +5,7 @@ import java.util.Date;
 public class Class1 {
 
    /** The unique user Id */
-   private String id; //randomly generated on class creation. main purpose is for access from user saved classes
+   private String id; //is the schoolId + "_" + uniqueNumber, dont ask questions....
    private String name; //ex. "Software engineering" 
    private String school; //ex "Cal Poly Pomona"
    private String subject; //ex. CS, Art, Biology
