@@ -1,6 +1,9 @@
 
-function searchForClass() {
+function saveClass() {
 	
+	//TODO! 
+	
+	/*
 	var schoolId = $('#searchSchool').val();
 	var searchText = $('#searchText').val();
 	var classId = schoolId + "_" + searchText;
@@ -26,14 +29,11 @@ function searchForClass() {
 	} else {
 		alert("Select a school and type a criteria.");
 	}
+	*/
 }
 
 function goToClass(classid) {
 	
 	//USE CLASSID TO DISPLAY CLASS INFO
 	window.location.href = '/classlookup.html';
-}
-
-function goToCreateClass(){
-	window.location.href = '/editclass.html';
 }
