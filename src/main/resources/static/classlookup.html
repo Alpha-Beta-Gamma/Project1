@@ -17,7 +17,7 @@ then the user is moved to the calculationpage.html
 	    <script src="/js/classlookup-control.js"></script>
 	</head>
 
-<body id="main_body" >
+<body id="main_body" onload="addAllSchools();">
 	
 	<div>
 	
@@ -29,23 +29,30 @@ then the user is moved to the calculationpage.html
 			</div>						
 				<ul >
 				
-						<li id="li_1" >
-			<label class="description" for="element_1">School </label>
+
+
 			<div>
-			<select class="element select large" id="searchSchool" name="element_1"> 
+			
+			
+			
+		
+		
+			<select class="element select large" id="schoolCombo" name="element_1"> 
 				<option value="" selected="selected"></option><!-- VALUE WILL BE SCHOOL ID---->
-					<option value="1" >Cal Poly Pomona</option>
+					<option value="-1" >Other...</option>
+					<option value="1" >Cal Poly Pomona1111</option>
 					<option value="2" >Cal Poly San Luis Obispo</option>
-					<option value="3" >Other...</option>
-	
 			</select>
+			
+			
+			
+			
 			</div><p class="guidelines" id="guide_1"><small>If your school is not listed it may not have any classes created for your school, you can create one using the create button.</small></p> 
 			</li>		<li id="li_2" >
 			<label class="description" for="element_2">Search (Unique Class# only accepted at this time) our class is 14403 go ahead, give it a go</label>
 			<div>
 				<input id="searchText" name="element_2" class="element text medium" type="text" maxlength="255" value=""/> 
 			</div> 
-			</li>
 				
 				</ul>
 				<button onclick="searchForClass()">Search</button>

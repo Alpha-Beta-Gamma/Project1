@@ -1,5 +1,6 @@
 package edu.csupomona.cs480.controller;
 
+import java.security.SecureRandom;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -7,6 +8,7 @@ import org.apache.commons.math3.stat.StatUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigInteger;
 import java.net.URL;
 
 import org.jsoup.Jsoup;
@@ -25,8 +27,10 @@ import com.google.common.base.Optional;
 
 import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.data.Class1;
+import edu.csupomona.cs480.data.School;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.ClassManager;
+import edu.csupomona.cs480.data.provider.SchoolManager;
 import edu.csupomona.cs480.data.provider.UserManager;
 
 /**
@@ -52,6 +56,9 @@ public class WebController {
 
    @Autowired
    private ClassManager classManager;
+
+   @Autowired
+   private SchoolManager schoolManager;
 
    /**
     * This is a simple example of how the HTTP API works.
@@ -211,6 +218,19 @@ public class WebController {
       user.setEmail(email);
       user.setPass(password);
       userManager.updateUser(user);
+      return user;
+   }
+
+   //made for adding stuff hard coded, comment out when not in use
+   @RequestMapping(value = "/dostuff", method = RequestMethod.GET)
+   void dostuff() {
+      /*
+      SecureRandom random = new SecureRandom();
+      School school = new School();
+      school.setName("Cal Poly Pomona");
+      school.setId(new BigInteger(130, random).toString(32));
+      schoolManager.updateSchool(school);
+      */
 
       /*/ADDED CODE-------------------------------------------------------------------
       Class1 clas = new Class1();
@@ -221,10 +241,9 @@ public class WebController {
       clas.setSubject("CS");
       clas.setUniqueNumber("14403"); //can be found on broncodirect
       classManager.updateClass(clas);
-      //DELETST STUFF HERE LATER------------------------------------------------------
+      //DELETE STUFF HERE LATER------------------------------------------------------
       */
 
-      return user;
    }
 
    /**
@@ -250,6 +269,11 @@ public class WebController {
    @RequestMapping(value = "/classes/list", method = RequestMethod.GET)
    List<Class1> listAllClasses() {
       return classManager.listAllClasses();
+   }
+
+   @RequestMapping(value = "/schools", method = RequestMethod.GET)
+   List<School> listAllSchools() {
+      return schoolManager.listAllSchools();
    }
 
    /**

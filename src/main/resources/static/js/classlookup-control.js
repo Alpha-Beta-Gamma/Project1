@@ -37,3 +37,54 @@ function goToClass(classid) {
 function goToCreateClass(){
 	window.location.href = '/editclass.html';
 }
+
+function addAllSchools(){
+
+	$.ajax(
+			{
+				type : "GET",
+				url  : "/schools",
+				data : {
+				},
+				success : function(result) {
+					
+					for (var s in result){
+					    var combo = document.getElementById("schoolCombo");
+					     
+					    var option = document.createElement("option");
+					    option.text = s.name; //TODO line is wrong-----------------------------------------------
+					    option.value = result.id; //TODO line is wrong----------------------------
+					    try {
+					        combo.add(option, null); //Standard
+					    }catch(error) {
+					        combo.add(option); // IE only
+					    }						
+					}
+					
+
+				},
+				error: function (jqXHR, exception) {
+					alert("Failed to get schools for combobox.");
+				}
+			});
+
+		
+		alert("DONE! :] ...Debug");
+
+}
+
+
+function addCombo() {
+    var textb = document.getElementById("schooltxt");
+    var combo = document.getElementById("schoolCombo");
+     
+    var option = document.createElement("option");
+    option.text = textb.value;
+    option.value = textb.value;
+    try {
+        combo.add(option, null); //Standard
+    }catch(error) {
+        combo.add(option); // IE only
+    }
+    textb.value = "";
+}

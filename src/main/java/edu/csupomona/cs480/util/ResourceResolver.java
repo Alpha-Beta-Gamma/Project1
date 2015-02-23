@@ -31,4 +31,12 @@ public class ResourceResolver {
       }
       return file;
    }
+
+   public static File getSchoolFile() {
+      File file = new File(BASE_DIR + "/" + "school-map.json");
+      if (!file.getParentFile().exists()) {
+         file.getParentFile().mkdirs();
+      }
+      return file;
+   }
 }

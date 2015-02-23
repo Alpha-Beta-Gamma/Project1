@@ -8,7 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 import edu.csupomona.cs480.data.provider.ClassManager;
 import edu.csupomona.cs480.data.provider.FSClassManager;
+import edu.csupomona.cs480.data.provider.FSSchoolManager;
 import edu.csupomona.cs480.data.provider.FSUserManager;
+import edu.csupomona.cs480.data.provider.SchoolManager;
 import edu.csupomona.cs480.data.provider.UserManager;
 
 @Configuration
@@ -32,6 +34,12 @@ public class App {
    public ClassManager classManager() {
       ClassManager classManager = new FSClassManager();
       return classManager;
+   }
+
+   @Bean
+   public SchoolManager schoolManager() {
+      SchoolManager schoolManager = new FSSchoolManager();
+      return schoolManager;
    }
 
    /**
