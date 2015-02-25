@@ -18,6 +18,7 @@ public class School {
    }
 
    public void setId(String id) {
+      //must be ordered from 0 to infinity, check before adding which id you should use
       this.id = id;
    }
 

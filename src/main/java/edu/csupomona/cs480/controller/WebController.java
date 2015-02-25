@@ -225,6 +225,7 @@ public class WebController {
    @RequestMapping(value = "/dostuff", method = RequestMethod.GET)
    void dostuff() {
 
+      /*
       School school = new School();
       school.setName("Cal Poly Pomona");
       school.setId("0");
@@ -233,6 +234,8 @@ public class WebController {
       school.setName("Cal Poly San Luis Obispo");
       school.setId("1");
       schoolManager.updateSchool(school);
+
+      */
 
       /*/ADDED CODE-------------------------------------------------------------------
       Class1 clas = new Class1();

@@ -57,7 +57,6 @@ function addAllSchools(){
 				}
 			});
 	
-	alert("DEbug");
 	for (var i = 0; i < schoolCount; i++){
 	$.ajax(
 			{
@@ -67,7 +66,6 @@ function addAllSchools(){
 					"schoolId" : i
 				},
 				success : function(result) {
-					
 
 					    var combo = document.getElementById("schoolCombo");
 					     
@@ -79,14 +77,11 @@ function addAllSchools(){
 					    }catch(error) {
 					        combo.add(option); // IE only
 					    }						
-
 				},
 				error: function (jqXHR, exception) {
 					alert("Failed to get schools for combobox.");
 				}
 		});
-		
-		
 	}
 }
 
