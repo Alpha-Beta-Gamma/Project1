@@ -14,4 +14,6 @@ public interface SchoolManager {
 
    public List<School> listAllSchools();
 
+   public int numSchools();
+
 }

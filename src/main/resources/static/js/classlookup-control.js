@@ -1,7 +1,7 @@
 
 function searchForClass() {
 	
-	var schoolId = $('#searchSchool').val();
+	var schoolId = $('#schoolCombo').val();
 	var searchText = $('#searchText').val();
 	var classId = schoolId + "_" + searchText;
 	
@@ -39,38 +39,55 @@ function goToCreateClass(){
 }
 
 function addAllSchools(){
-
+	//gets all the schools in database and adds them to the combobox for user selection upon search
+	
+	var schoolCount = 0;
+	
+	$.ajax(
+			{
+				type : "GET",
+				url  : "/schoolcount",
+				data : {
+				},
+				success : function(result) {
+					schoolCount = result;
+				},
+				error: function (jqXHR, exception) {
+					alert("Failed to get schools.");
+				}
+			});
+	
+	alert("DEbug");
+	for (var i = 0; i < schoolCount; i++){
 	$.ajax(
 			{
 				type : "GET",
 				url  : "/schools",
 				data : {
+					"schoolId" : i
 				},
 				success : function(result) {
 					
-					for (var s in result){
+
 					    var combo = document.getElementById("schoolCombo");
 					     
 					    var option = document.createElement("option");
-					    option.text = s.name; //TODO line is wrong-----------------------------------------------
-					    option.value = result.id; //TODO line is wrong----------------------------
+					    option.text = result.name; 
+					    option.value = result.id;
 					    try {
 					        combo.add(option, null); //Standard
 					    }catch(error) {
 					        combo.add(option); // IE only
 					    }						
-					}
-					
 
 				},
 				error: function (jqXHR, exception) {
 					alert("Failed to get schools for combobox.");
 				}
-			});
-
+		});
 		
-		alert("DONE! :] ...Debug");
-
+		
+	}
 }
 
 

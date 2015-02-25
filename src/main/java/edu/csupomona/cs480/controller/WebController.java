@@ -224,13 +224,15 @@ public class WebController {
    //made for adding stuff hard coded, comment out when not in use
    @RequestMapping(value = "/dostuff", method = RequestMethod.GET)
    void dostuff() {
-      /*
-      SecureRandom random = new SecureRandom();
+
       School school = new School();
       school.setName("Cal Poly Pomona");
-      school.setId(new BigInteger(130, random).toString(32));
+      school.setId("0");
       schoolManager.updateSchool(school);
-      */
+
+      school.setName("Cal Poly San Luis Obispo");
+      school.setId("1");
+      schoolManager.updateSchool(school);
 
       /*/ADDED CODE-------------------------------------------------------------------
       Class1 clas = new Class1();
@@ -244,6 +246,11 @@ public class WebController {
       //DELETE STUFF HERE LATER------------------------------------------------------
       */
 
+   }
+
+   @RequestMapping(value = "/schoolcount", method = RequestMethod.GET)
+   int schoolCount() {
+      return schoolManager.numSchools();
    }
 
    /**
@@ -272,8 +279,9 @@ public class WebController {
    }
 
    @RequestMapping(value = "/schools", method = RequestMethod.GET)
-   List<School> listAllSchools() {
-      return schoolManager.listAllSchools();
+   School getSchool(@RequestParam("schoolId") String schoolId) {
+      School school = schoolManager.getSchool(schoolId);
+      return school;
    }
 
    /**

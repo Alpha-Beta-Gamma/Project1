@@ -87,4 +87,8 @@ public class FSSchoolManager implements SchoolManager {
       return new ArrayList<School>(SchoolMap.values());
    }
 
+   public int numSchools() {
+      return getSchoolMap().values().size();
+   }
+
 }
