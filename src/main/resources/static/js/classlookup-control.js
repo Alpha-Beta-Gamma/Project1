@@ -1,11 +1,13 @@
 
 function searchForClass() {
 	
-	var schoolId = $('#schoolCombo').val();
+	var schoolId = parseInt($('#schoolCombo').val());
 	var searchText = $('#searchText').val();
 	var classId = schoolId + "_" + searchText;
 	
-	if (schoolId && searchText) {
+	alert(classId);
+	
+	if (searchText) {
 		$.ajax(
 				{
 					type : "GET",
@@ -13,11 +15,19 @@ function searchForClass() {
 					data : {
 					},
 					success : function(result) {
-						$('#result_name').text(result.name);
-						$('#result_subject').text(result.subject);
-						$('#result_uniqueNumber').text(result.uniqueNumber);
-						$('#result_instructor').text(result.instructor);
-						$('#result_link').html("<a class=\"button\"  href=\"classlookup.html\" >Go!</a>");
+						if (result.name){
+							$('#result_name').text(result.name);
+							$('#result_subject').text(result.subject);
+							$('#result_uniqueNumber').text(result.uniqueNumber);
+							$('#result_instructor').text(result.instructor);							
+							$('#result_link').html("<a class=\"button\"  href=\"classlookup.html\" >Go!</a>");
+						} else {
+							$('#result_name').text("NO RESULTS");
+							$('#result_subject').text("");
+							$('#result_uniqueNumber').text("");
+							$('#result_instructor').text("");							
+							$('#result_link').html("");
+						}
 					},
 					error: function (jqXHR, exception) {
 						alert("Failed to get the class.");
@@ -38,6 +48,7 @@ function goToCreateClass(){
 	window.location.href = '/editclass.html';
 }
 
+
 function addAllSchools(){
 	//gets all the schools in database and adds them to the combobox for user selection upon search
 	
@@ -56,6 +67,8 @@ function addAllSchools(){
 					alert("Failed to get schools.");
 				}
 			});
+	
+	alert("BUG to fix, combobox values will not load without this alert");
 	
 	for (var i = 0; i < schoolCount; i++){
 	$.ajax(
@@ -84,7 +97,6 @@ function addAllSchools(){
 		});
 	}
 }
-
 
 function addCombo() {
     var textb = document.getElementById("schooltxt");

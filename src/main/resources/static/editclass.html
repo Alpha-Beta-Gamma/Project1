@@ -14,7 +14,7 @@ if the user makes changes to the data, then it is saved when returning to the cl
 	    <script src="/js/editclass-control.js"></script>
 	</head>
 
-	<body>
+	<body onload="addAllSchools()">
 		
 		<div>
 	
@@ -30,37 +30,34 @@ if the user makes changes to the data, then it is saved when returning to the cl
 			<label class="description" for="element_1">School </label>
 			<div>
 			<select class="element select large" id="schoolCombo" name="element_1"> 
-				<option value="" selected="selected"></option><!-- VALUE WILL BE SCHOOL ID---->
+				<option value="" selected="selected"></option>
 					<option value="-1" >New school...</option>
-					<option value="1" >Cal Poly Pomona</option>
-					<option value="2" >Cal Poly San Luis Obispo</option>
-					<option value="3" >Other...</option>
 			</select>
 			
 			<p class="guidelines" id="guide_1"><small>If your school is not listed, select new school and type the name of your school below.</small></p> 
 			
-			<input id="newschool" name="element_2" class="element text medium" type="text" maxlength="255" value=""/>
+			<input id="schoolText" name="element_2" class="element text medium" type="text" maxlength="255" value=""/>
 			
 			</div><p class="guidelines" id="guide_1"><small>Please fill out all that you know.</small></p> 
 			</li>
 			<div>
-				<input id="uniquenumber" name="element_2" class="element text medium" type="text" maxlength="255" value=""/> 
+				<input id="uniqueText" name="element_2" class="element text medium" type="text" maxlength="255" value=""/> 
 				<label class="description" for="element_2">Unique Class# (Should have onr per school) </label>
 			</div>
 			<div>
-				<input id="classname" name="element_6" class="element text medium" type="text" maxlength="255" value=""/> 
+				<input id="nameText" name="element_6" class="element text medium" type="text" maxlength="255" value=""/> 
 				<label class="description" for="element_2">Class Name (ex. Intro to Computers) </label>
 			</div> 
 			<div>
-				<input id="subject" name="element_3" class="element text medium" type="text" maxlength="255" value=""/> 
+				<input id="subjectText" name="element_3" class="element text medium" type="text" maxlength="255" value=""/> 
 				<label class="description" for="element_2">Subject (ex. CS for Computer Science, PHY for Physics) </label>
 			</div> 
 			<div>
-				<input id="coursenumber" name="element_4" class="element text medium" type="text" maxlength="255" value=""/> 
+				<input id="numberText" name="element_4" class="element text medium" type="text" maxlength="255" value=""/> 
 				<label class="description" for="element_2">Course Number (ex. 101) </label>
 			</div> 
 			<div>
-				<input id="instructor" name="element_5" class="element text medium" type="text" maxlength="255" value=""/> 
+				<input id="instructorText" name="element_5" class="element text medium" type="text" maxlength="255" value=""/> 
 				<label class="description" for="element_2">Instructor Name (ex. John Doe) </label>
 			</div> 
 			</li>
@@ -68,8 +65,6 @@ if the user makes changes to the data, then it is saved when returning to the cl
 				</ul>
 				<button onclick="saveClass()">Save</button>
 	</div>
-		
-
 	</body>
 
 </html>

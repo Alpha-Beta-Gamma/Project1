@@ -221,6 +221,48 @@ public class WebController {
       return user;
    }
 
+   @RequestMapping(value = "/add_school", method = RequestMethod.POST)
+   School newSchool(@RequestParam("name") String name) {
+      School school = new School();
+      school.setName(name);
+      school.setId(schoolManager.numSchools());
+
+      schoolManager.updateSchool(school);
+      return school;
+   }
+
+   @RequestMapping(value = "/add_class", method = RequestMethod.POST)
+   Class1 newClass(@RequestParam("name") String name, @RequestParam("id") String id, @RequestParam("instructor") String instructor, @RequestParam("school") String school,
+         @RequestParam("subject") String subject, @RequestParam("uniqueNumber") String uniqueNumber) {
+
+      Class1 clas = new Class1();
+      clas.setId(schoolManager.numSchools() + id);
+      clas.setInstructor(instructor);
+      clas.setName(name);
+      clas.setSchool(school);
+      clas.setSubject(subject);
+      clas.setUniqueNumber(uniqueNumber);
+
+      classManager.updateClass(clas);
+      return clas;
+   }
+
+   @RequestMapping(value = "/add_class_no_new_school", method = RequestMethod.POST)
+   Class1 newClass2(@RequestParam("name") String name, @RequestParam("id") String id, @RequestParam("instructor") String instructor, @RequestParam("school") String school,
+         @RequestParam("subject") String subject, @RequestParam("uniqueNumber") String uniqueNumber) {
+
+      Class1 clas = new Class1();
+      clas.setId(id);
+      clas.setInstructor(instructor);
+      clas.setName(name);
+      clas.setSchool(school);
+      clas.setSubject(subject);
+      clas.setUniqueNumber(uniqueNumber);
+
+      classManager.updateClass(clas);
+      return clas;
+   }
+
    //made for adding stuff hard coded, comment out when not in use
    @RequestMapping(value = "/dostuff", method = RequestMethod.GET)
    void dostuff() {
@@ -279,6 +321,11 @@ public class WebController {
    @RequestMapping(value = "/classes/list", method = RequestMethod.GET)
    List<Class1> listAllClasses() {
       return classManager.listAllClasses();
+   }
+
+   @RequestMapping(value = "/schools/list", method = RequestMethod.GET)
+   List<School> listAllSchools() {
+      return schoolManager.listAllSchools();
    }
 
    @RequestMapping(value = "/schools", method = RequestMethod.GET)

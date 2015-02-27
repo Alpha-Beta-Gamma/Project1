@@ -17,9 +17,9 @@ public class School {
       return id;
    }
 
-   public void setId(String id) {
+   public void setId(int id) {
       //must be ordered from 0 to infinity, check before adding which id you should use
-      this.id = id;
+      this.id = id + "";
    }
 
    public String getName() {
