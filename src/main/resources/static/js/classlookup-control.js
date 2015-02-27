@@ -5,8 +5,6 @@ function searchForClass() {
 	var searchText = $('#searchText').val();
 	var classId = schoolId + "_" + searchText;
 	
-	alert(classId);
-	
 	if (searchText) {
 		$.ajax(
 				{

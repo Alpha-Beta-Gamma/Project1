@@ -8,8 +8,6 @@ function saveClass() {
 	var subjectText = $('#subjectText').val();
 	var numberText = $('#numberText').val();
 	var instructorText = $('#instructorText').val();
-	
-	alert(schoolId)
 
 	if ((schoolId === -1 && schoolText && uniqueText && nameText && subjectText && numberText && instructorText)
 			|| (uniqueText && nameText && subjectText && numberText && instructorText)){
@@ -30,6 +28,8 @@ function saveClass() {
 						}
 					});
 			
+			/*
+			 //CODE BELOW DOESNT WORK for some reason, so you cant add a class and school at the same time
 			alert("BUG, code will not work without this alert");
 			
 			$.ajax(
@@ -51,6 +51,7 @@ function saveClass() {
 						alert("Failed to add the class. Please check the inputs.");
 					}
 				});
+				*/
 		} else{
 			$.ajax(
 					{
