@@ -1,6 +1,7 @@
 package edu.csupomona.cs480;
 
 import java.util.*;
+import java.lang.Math;
 
 //import java.lang.Exception;//might be needed
 
@@ -8,10 +9,10 @@ public class Course {
    String name;
    int number;
    String professor;
-   static HashMap<String, Integer> distribution;
+   static HashMap<String, Double> distribution;
    Boolean percentBased;
 
-   public Course(String name, int number, String professor, HashMap<String, Integer> dist) {
+   public Course(String name, int number, String professor, HashMap<String, Double> dist) {
       this.name = name;
       this.number = number;
       this.professor = professor;
@@ -20,7 +21,7 @@ public class Course {
    }
 
    public Course(String name, int number, String professor,
-	   HashMap<String, Integer> dist, Boolean percentBased) {
+	   HashMap<String, Double> dist, Boolean percentBased) {
 	   this.name = name;
 	   this.number = number;
 	   this.professor = professor;
@@ -60,14 +61,14 @@ public class Course {
       changeDistribution(newDistribution);
       !!Make sure total percentages add to up 100!!
    */
-   public HashMap<String, Integer> getDistribution() {
+   public HashMap<String, Double> getDistribution() {
       return distribution;
    }
 
    /*
     Changes the old grade distribution to a given grade distribution
     */
-   public void changeDistribution(HashMap<String, Integer> changedDistribution) {
+   public void changeDistribution(HashMap<String, Double> changedDistribution) {
       distribution = changedDistribution;
    }
 
@@ -75,9 +76,9 @@ public class Course {
     Probably won't use checkGoodPercent, input verification to be
       handled elsewhere.
     */
-   public boolean checkGoodPercent(HashMap<String, Integer> test) {
+   public boolean checkGoodPercent(HashMap<String, Double> test) {
       int totalPercent = 0;
-      for (int value : test.values()) {
+      for (Double value : test.values()) {
          totalPercent += value;
       }
       return (totalPercent == 100);
@@ -108,7 +109,7 @@ public class Course {
 	   * is being calculated.  So if distribution contained 5 elements,
 	   * obtained would contain 4, as it would not include final.
 	 */
-	public double finalCalculate(HashMap<String, Integer> obtained, double goal)
+	public double finalCalculate(HashMap<String, Double> obtained, double goal)
 	{
 	    double gradeNeeded = 0;
 	    double totalPercent = 0;//Will usually be 100
@@ -118,10 +119,10 @@ public class Course {
 	    if(!percentBased){
 	    	double totalPoints = 0;
 	    	double obtainedPoints = 0;
-	        for (int value : distribution.values()){
+	        for (Double value : distribution.values()){
 	           totalPoints += value;//find out how many points class is out of
 	        }
-	        for(int value : obtained.values()){
+	        for(Double value : obtained.values()){
 	        	obtainedPoints += value;//find out how many points were obtained
 	        }
 	        finalWeight = ((distribution.get("Final")/totalPoints) * 100);//find out what percent of the class the final is
@@ -132,7 +133,7 @@ public class Course {
             //System.out.println("Goal: " + goal);
 	    }
 	    else{
-		    for(int value : distribution.values()){
+		    for(Double value : distribution.values()){
 		        totalPercent += value;
 		    }
 		    /*
@@ -141,7 +142,7 @@ public class Course {
 		     */
 		    totalPercent -= distribution.get("Final");
 		    //System.out.println("Total Percent: " + totalPercent);-------------------
-		    for(int value : obtained.values()){
+		    for(Double value : obtained.values()){
 		        totalEarned += value;
 		    }
 		    finalWeight = distribution.get("Final");
@@ -175,7 +176,7 @@ public class Course {
 	     */
 	    gradeNeeded *= (100 / finalWeight);
 	    
-	    return gradeNeeded;
+	    return Math.round(gradeNeeded);
 	}
 
 

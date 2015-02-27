@@ -34,7 +34,7 @@ public class AppTest extends TestCase {
    }
 
    public void testMissingValue() {
-      Course c = new Course("Databases", 48043, "Smith", new HashMap<String, Integer>());
+      Course c = new Course("Databases", 48043, "Smith", new HashMap<String, Double>());
       double[] scores = { 30.0, 20.0, 10.0, 5.0 };
       double outOf = 100.0;
 
@@ -42,38 +42,25 @@ public class AppTest extends TestCase {
 
    }
    
-   public void testFinalGradeNeeded() {
-	   HashMap<String, Integer> possible = new HashMap<String, Integer>();
-	   HashMap<String, Integer> got = new HashMap<String, Integer>();
-	   possible.put("Homework", 20);
-	   possible.put("Quizzes", 30);
-	   possible.put("Midterm", 25);
-	   possible.put("Final", 25);
-	   got.put("Homework", 20);
-	   got.put("Quizzes", 30);
-	   got.put("Midterm",  25);
-	   
-	   assertEquals(FinalCalc.Calculate(possible, got, 87.5), 50, 0.0);
-   }
    
    public void testFinalPoints(){
-	   HashMap<String, Integer> possible = new HashMap<String, Integer>();
-	   HashMap<String, Integer> got = new HashMap<String, Integer>();
-	   possible.put("Homework", 100);
-	   possible.put("Quizzes", 100);
-	   possible.put("Midterm", 150);
-	   possible.put("Final", 200);
-	   got.put("Homework", 100);
-	   got.put("Quizzes", 100);
-	   got.put("Midterm", 150);
+	   HashMap<String, Double> possible = new HashMap<String, Double>();
+	   HashMap<String, Double> got = new HashMap<String, Double>();
+	   possible.put("Homework", 100.0);
+	   possible.put("Quizzes", 100.0);
+	   possible.put("Midterm", 150.0);
+	   possible.put("Final", 200.0);
+	   got.put("Homework", 100.0);
+	   got.put("Quizzes", 100.0);
+	   got.put("Midterm", 150.0);
 	   Course testCourse = new Course("Test", 101, "Joh Doe", possible, false);
-	   assertEquals(testCourse.finalCalculate(got, 100), 100, 0.1);
+	   assertEquals(testCourse.finalCalculate(got, 100), 100, 0.0);
 	   
 	   
    }
    
    public void testProfessor() {
-	   Course d = new Course("CS 480", 48043, "Saroka", new HashMap<String, Integer>());
+	   Course d = new Course("CS 480", 48043, "Saroka", new HashMap<String, Double>());
 	   d.setProfessor("Sun");
 	   
 	   assertEquals("Sun", d.getProfessor());
