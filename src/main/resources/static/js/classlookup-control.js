@@ -1,9 +1,12 @@
 
+var classId = "";
+
+
 function searchForClass() {
 	
 	var schoolId = parseInt($('#schoolCombo').val());
 	var searchText = $('#searchText').val();
-	var classId = schoolId + "_" + searchText;
+	classId = schoolId + "_" + searchText;
 	
 	if (searchText) {
 		$.ajax(
@@ -17,8 +20,8 @@ function searchForClass() {
 							$('#result_name').text(result.name);
 							$('#result_subject').text(result.subject);
 							$('#result_uniqueNumber').text(result.uniqueNumber);
-							$('#result_instructor').text(result.instructor);							
-							$('#result_link').html("<a class=\"button\"  href=\"classlookup.html\" >Go!</a>");
+							$('#result_instructor').text(result.instructor);
+							$('#result_link').html("<button onclick=\"goToClass()\" >Go!</button>");
 						} else {
 							$('#result_name').text("NO RESULTS");
 							$('#result_subject').text("");
@@ -36,10 +39,10 @@ function searchForClass() {
 	}
 }
 
-function goToClass(classid) {
-	
-	//USE CLASSID TO DISPLAY CLASS INFO
-	window.location.href = '/classlookup.html';
+function goToClass() {
+
+	//TODO USE classId TO DISPLAY CLASS INFO
+	window.location.href = '/calculationpage.html';
 }
 
 function goToCreateClass(){
