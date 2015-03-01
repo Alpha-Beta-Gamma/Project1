@@ -39,4 +39,11 @@ public class ResourceResolver {
       }
       return file;
    }
+   public static File getCalcFile() {
+      File file = new File(BASE_DIR + "/" + "calc-map.json");
+      if (!file.getParentFile().exists()) {
+         file.getParentFile().mkdirs();
+      }
+      return file;
+   }
 }

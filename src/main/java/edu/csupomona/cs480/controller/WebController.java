@@ -26,9 +26,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.common.base.Optional;
 
 import edu.csupomona.cs480.App;
+import edu.csupomona.cs480.data.Calculation;
 import edu.csupomona.cs480.data.Class1;
 import edu.csupomona.cs480.data.School;
 import edu.csupomona.cs480.data.User;
+import edu.csupomona.cs480.data.provider.CalculationManager;
 import edu.csupomona.cs480.data.provider.ClassManager;
 import edu.csupomona.cs480.data.provider.SchoolManager;
 import edu.csupomona.cs480.data.provider.UserManager;
@@ -59,6 +61,9 @@ public class WebController {
 
    @Autowired
    private SchoolManager schoolManager;
+   
+   @Autowired
+   private CalculationManager calculationManager;
 
    /**
     * This is a simple example of how the HTTP API works.
@@ -221,6 +226,12 @@ public class WebController {
       return user;
    }
 
+   @RequestMapping(value = "/add_calculator", method = RequestMethod.POST)
+   Calculation newCalc(@RequestParam("id") String id){
+   	Calculation calc = new Calculation();
+   	return calc;
+   }
+   
    @RequestMapping(value = "/add_school", method = RequestMethod.POST)
    School newSchool(@RequestParam("name") String name) {
       School school = new School();
@@ -296,6 +307,7 @@ public class WebController {
    @RequestMapping(value = "/schoolcount", method = RequestMethod.GET)
    int schoolCount() {
       return schoolManager.numSchools();
+     
    }
 
    /**

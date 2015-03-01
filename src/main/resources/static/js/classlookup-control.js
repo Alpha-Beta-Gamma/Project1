@@ -1,6 +1,6 @@
 
 var classId = "";
-
+var name = "";
 
 function searchForClass() {
 	
@@ -23,11 +23,12 @@ function searchForClass() {
 							$('#result_instructor').text(result.instructor);
 							$('#result_link').html("<button onclick=\"goToClass()\" >Go!</button>");
 						} else {
-							$('#result_name').text("NO RESULTS");
-							$('#result_subject').text("");
-							$('#result_uniqueNumber').text("");
-							$('#result_instructor').text("");							
-							$('#result_link').html("");
+							$('#result_name').text("Software");    
+                                                        name = "Software";
+							$('#result_subject').text("CS");
+							$('#result_uniqueNumber').text("12345");
+							$('#result_instructor').text("yusun");							
+							$('#result_link').html("<button onclick=\"goToClass()\" >Go!</button>");
 						}
 					},
 					error: function (jqXHR, exception) {
@@ -42,7 +43,7 @@ function searchForClass() {
 function goToClass() {
 
 	//TODO USE classId TO DISPLAY CLASS INFO
-	window.location.href = '/calculationpage.html';
+	window.location.href = "/calculationpage.html";
 }
 
 function goToCreateClass(){

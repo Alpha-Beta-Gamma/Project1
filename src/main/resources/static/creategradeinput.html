@@ -1,0 +1,72 @@
+
+<!-- DESCRIPTION 
+
+This file should display all the details about how the grade is calculated for this class
+if the user makes changes to the data, then it is saved when returning to the classlookup.html  
+
+-->
+
+<html>
+<link rel="icon" type="image/png" href="images/favicon.ico">
+	<head>
+	    <title>GradeBane - Edit Grade Calculator</title>
+	    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	    <script src="/js/calculation-control.js"></script>
+	</head>
+
+	<body onload="addAllSchools()">
+		
+		<div>
+	
+		<h1><a>Create/Edit a Calculator</a></h1>
+
+			<div class="form_description">
+				<h2>please.. create.. enjoy</h2>
+				
+			</div>						
+				<ul >
+				
+						<li id="li_1" >
+			<label class="description" for="element_1">School </label>
+			<div>
+			<select class="element select large" id="schoolCombo" name="element_1"> 
+				<option value="" selected="selected"></option>
+					<option value="-1" >New school...</option>
+			</select>
+			
+			<p class="guidelines" id="guide_1"><small>If your school is not listed, select new school and type the name of your school below.</small></p> 
+			
+			<input id="schoolText" name="element_2" class="element text medium" type="text" maxlength="255" value=""/>
+			
+			</div><p class="guidelines" id="guide_1"><small>Please fill out all that you know.</small></p> 
+			</li>
+			<div>
+				<input id="uniqueText" name="element_2" class="element text medium" type="text" maxlength="255" value=""/> 
+				<label class="description" for="element_2">Unique Class# (Should have onr per school) </label>
+			</div>
+			<div>
+				<input id="nameText" name="element_6" class="element text medium" type="text" maxlength="255" value=""/> 
+				<label class="description" for="element_2">Class Name (ex. Intro to Computers) </label>
+			</div> 
+			<div>
+				<input id="subjectText" name="element_3" class="element text medium" type="text" maxlength="255" value=""/> 
+				<label class="description" for="element_2">Subject (ex. CS for Computer Science, PHY for Physics) </label>
+			</div> 
+			<div>
+				<input id="numberText" name="element_4" class="element text medium" type="text" maxlength="255" value=""/> 
+				<label class="description" for="element_2">Course Number (ex. 101) </label>
+			</div> 
+			<div>
+				<input id="instructorText" name="element_5" class="element text medium" type="text" maxlength="255" value=""/> 
+				<label class="description" for="element_2">Instructor Name (ex. John Doe) </label>
+			</div> 
+			</li>
+
+				</ul>
+				<button onclick="saveClass()">Save</button>
+	</div>
+	</body>
+
+</html>
+
+

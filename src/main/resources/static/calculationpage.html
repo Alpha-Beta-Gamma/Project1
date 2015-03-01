@@ -1,15 +1,111 @@
 
 <html>
 <link rel="icon" type="image/png" href="images/favicon.ico">
-	<head>
-	    <title>Create an Account</title>
+<head>
+	    <title>Calculation</title>
 	    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	    <script src="/js/createaccount-control.js"></script>
-	</head>
+	    <script src="/js/calculation-control.js"></script>
+            <SCRIPT TYPE="text/javascript">
+// copyright 1999 Idocs, Inc. http://www.idocs.com
+// Distribute this script freely but keep this notice in place
+function numbersonly(myfield, e, dec)
+{
+var key;
+var keychar;
 
-	<body>
-		SUCCESS! This page just isnt made yet
+if (window.event)
+   key = window.event.keyCode;
+else if (e)
+   key = e.which;
+else
+   return true;
+keychar = String.fromCharCode(key);
 
+// control keys
+if ((key==null) || (key==0) || (key==8) || 
+    (key==9) || (key==13) || (key==27) )
+   return true;
+
+// numbers
+else if ((("0123456789").indexOf(keychar) > -1))
+   return true;
+
+// decimal point jump
+else if (dec && (keychar == "."))
+   {
+   myfield.form.elements[dec].focus();
+   return false;
+   }
+else
+   return false;
+}
+
+</SCRIPT>
+</head>
+
+	<body onload="getSchoolAndClass()">
+            <p>Input scores to calculate your grade</p>
+            <label id="school"></label>
+            <p id="class_number"></p>
+            <div>
+            <select id="calculatorCombo">
+                <option value="" selected="selected"></option>
+            </select>
+                <button onclick="createGradeInput()">Create</button>
+                <button onclick="selectGradeInput()">Select</button>
+            </div>
+            <div>
+            <table border="1">
+                <tr>
+                    <td></td>
+                    <td>Type</td>
+                    <td>Your Score</td>
+                </tr>
+                <tr>
+                    <td>Score: </td>
+                    <td><label id="score_name1"></td>
+                    <td><input id="score_1" onKeyPress="return numbersonly(this, event)" value=""/></td>
+                </tr>
+                <tr>
+                    <td>Score: </td>
+                    <td><label id="score_name2"></td>
+                    <td><input id="score_2" onKeyPress="return numbersonly(this, event)" value=""/></td>
+                </tr>
+                <tr>
+                    <td>Score: </td>
+                    <td><label id="score_name3"></td>
+                    <td><input id="score_3" onKeyPress="return numbersonly(this, event)" value=""/></td>
+                </tr>
+                <tr>
+                    <td>Score: </td>
+                    <td><label id="score_name4"></td>
+                    <td><input id="score_4" onKeyPress="return numbersonly(this, event)" value=""/></td>
+                </tr>
+                <tr>
+                    <td>Score: </td>
+                    <td><label id="score_name5"></td>
+                    <td><input id="score_5" onKeyPress="return numbersonly(this, event)" value=""/></td>
+                </tr>
+                <tr>
+                    <td>Score: </td>
+                    <td><label id="score_name6"></td>
+                    <td><input id="score_6" onKeyPress="return numbersonly(this, event)" value=""/></td>
+                </tr>
+
+            </table>
+            <div>
+                <button onclick="calculateGrade()">Calculate!</button>
+            </div>
+            
+            <table>
+                <tr>
+                    <td>Your score is:</td>
+                    <td><label id="result_score"></label></td>
+                        
+                </tr>
+                <tr></tr>
+            </table>
+            </div>
 	</body>
 
 </html>

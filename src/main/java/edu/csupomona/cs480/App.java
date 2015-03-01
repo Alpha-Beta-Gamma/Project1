@@ -6,7 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import edu.csupomona.cs480.data.provider.CalculationManager;
 import edu.csupomona.cs480.data.provider.ClassManager;
+import edu.csupomona.cs480.data.provider.FSCalculationManager;
 import edu.csupomona.cs480.data.provider.FSClassManager;
 import edu.csupomona.cs480.data.provider.FSSchoolManager;
 import edu.csupomona.cs480.data.provider.FSUserManager;
@@ -42,6 +44,11 @@ public class App {
       return schoolManager;
    }
 
+   @Bean
+   public CalculationManager calculationManager() {
+      CalculationManager calculationManager = new FSCalculationManager();
+      return calculationManager;
+   }
    /**
     * This is the running main method for the web application.
     * Please note that Spring requires that there is one and
