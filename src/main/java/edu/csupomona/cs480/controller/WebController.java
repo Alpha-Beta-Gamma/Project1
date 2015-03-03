@@ -1,6 +1,5 @@
 package edu.csupomona.cs480.controller;
 
-import java.security.SecureRandom;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -8,7 +7,6 @@ import org.apache.commons.math3.stat.StatUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigInteger;
 import java.net.URL;
 
 import org.jsoup.Jsoup;
@@ -61,7 +59,7 @@ public class WebController {
 
    @Autowired
    private SchoolManager schoolManager;
-   
+
    @Autowired
    private CalculationManager calculationManager;
 
@@ -170,15 +168,7 @@ public class WebController {
 
    @RequestMapping(value = "/classes/{classId}", method = RequestMethod.GET)
    Class1 getClass(@PathVariable("classId") String classId) {
-      //System.out.println(uniqueNumber);
       Class1 clas = classManager.getClass(classId);
-      /*
-      //System.out.println(uniqueNumber);
-      if (clas != null)
-         System.out.println(clas.getName());
-      else
-         System.out.println("WAS NULL!");
-      */
       return clas;
    }
 
@@ -200,19 +190,6 @@ public class WebController {
     * @param major
     * @return
     */
-   /*
-      @RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.POST)
-      User updateUser(@PathVariable("userId") String id, @RequestParam("name") String name, @RequestParam(value = "major", required = false) String major) {
-         System.out.println("DEBUG56");
-         User user = new User();
-         user.setId(id);
-         user.setMajor(major);
-         user.setName(name);
-         userManager.updateUser(user);
-         return user;
-      }
-      */
-
    @RequestMapping(value = "/register_submit/{id}", method = RequestMethod.POST)
    User updateUser(@PathVariable("id") String id, @RequestParam("email") String email, @RequestParam("password") String password) {
       System.out.println("User registered...");
@@ -227,11 +204,11 @@ public class WebController {
    }
 
    @RequestMapping(value = "/add_calculator", method = RequestMethod.POST)
-   Calculation newCalc(@RequestParam("id") String id){
-   	Calculation calc = new Calculation();
-   	return calc;
+   Calculation newCalc(@RequestParam("id") String id) {
+      Calculation calc = new Calculation();
+      return calc;
    }
-   
+
    @RequestMapping(value = "/add_school", method = RequestMethod.POST)
    School newSchool(@RequestParam("name") String name) {
       School school = new School();
@@ -274,40 +251,9 @@ public class WebController {
       return clas;
    }
 
-   //made for adding stuff hard coded, comment out when not in use
-   @RequestMapping(value = "/dostuff", method = RequestMethod.GET)
-   void dostuff() {
-
-      /*
-      School school = new School();
-      school.setName("Cal Poly Pomona");
-      school.setId("0");
-      schoolManager.updateSchool(school);
-
-      school.setName("Cal Poly San Luis Obispo");
-      school.setId("1");
-      schoolManager.updateSchool(school);
-
-      */
-
-      /*/ADDED CODE-------------------------------------------------------------------
-      Class1 clas = new Class1();
-      clas.setId("1_14403");
-      clas.setInstructor("Yu Sun");
-      clas.setName("CS 480 Software Engineering");
-      clas.setSchool("1");
-      clas.setSubject("CS");
-      clas.setUniqueNumber("14403"); //can be found on broncodirect
-      classManager.updateClass(clas);
-      //DELETE STUFF HERE LATER------------------------------------------------------
-      */
-
-   }
-
    @RequestMapping(value = "/schoolcount", method = RequestMethod.GET)
    int schoolCount() {
       return schoolManager.numSchools();
-     
    }
 
    /**
