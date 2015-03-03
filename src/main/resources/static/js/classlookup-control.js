@@ -64,13 +64,13 @@ function addAllSchools(){
 				},
 				success : function(result) {
 					schoolCount = result;
-				},
+				},async:false,
 				error: function (jqXHR, exception) {
 					alert("Failed to get schools.");
 				}
 			});
 	
-	alert("BUG to fix, combobox values will not load without this alert");
+	//alert("BUG to fix, combobox values will not load without this alert");
 	
 	for (var i = 0; i < schoolCount; i++){
 	$.ajax(
