@@ -138,17 +138,15 @@ label {
 }
 </style>
 
-<body>
-
+<body onload="addAllSchools()">
 	<div>
 		<div class="form_description">
-
 			<h1>
 				<a>Create/<span>Edit</span> a <span>class!</span></a>
 			</h1>
 
-			<label class="description" for="element_1">School </label> <select
-				class="element select large" id="schoolCombo" name="element_1">
+			<label class="description" for="element_1">School </label>
+			<select	class="element select large" id="schoolCombo" name="element_1">
 				<option value="" selected="selected"></option>
 				<!-- VALUE WILL BE SCHOOL ID---->
 				<option value="-1">New school...</option>
@@ -185,7 +183,5 @@ label {
 
 		</div>
 	</div>
-
 </body>
-
 </html>

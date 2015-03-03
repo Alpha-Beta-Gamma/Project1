@@ -22,15 +22,11 @@ function saveClass() {
 						},
 						success : function(result) {
 							window.location.href = '/classlookup.html';
-						},
+						},async:false,
 						error: function (jqXHR, exception) {
 							alert("Failed to add the school. Please check the inputs.");
 						}
 					});
-			
-			/*
-			 //CODE BELOW DOESNT WORK for some reason, so you cant add a class and school at the same time
-			alert("BUG, code will not work without this alert");
 			
 			$.ajax(
 				{
@@ -46,12 +42,11 @@ function saveClass() {
 					},
 					success : function(result) {
 						window.location.href = '/classlookup.html';
-					},
+					},async:false,
 					error: function (jqXHR, exception) {
 						alert("Failed to add the class. Please check the inputs.");
 					}
 				});
-				*/
 		} else{
 			$.ajax(
 					{
@@ -99,13 +94,13 @@ function addAllSchools(){
 				},
 				success : function(result) {
 					schoolCount = result;
-				},
+				},async:false,
 				error: function (jqXHR, exception) {
 					alert("Failed to get schools.");
 				}
 			});
 	
-	alert("BUG to fix, combobox values will not load without this alert");
+	//alert("BUG to fix, combobox values will not load without this alert");
 	
 	for (var i = 0; i < schoolCount; i++){
 	$.ajax(

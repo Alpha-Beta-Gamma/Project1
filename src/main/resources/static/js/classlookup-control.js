@@ -23,12 +23,11 @@ function searchForClass() {
 							$('#result_instructor').text(result.instructor);
 							$('#result_link').html("<button onclick=\"goToClass()\" >Go!</button>");
 						} else {
-							$('#result_name').text("Software");    
-                                                        name = "Software";
-							$('#result_subject').text("CS");
-							$('#result_uniqueNumber').text("12345");
-							$('#result_instructor').text("yusun");							
-							$('#result_link').html("<button onclick=\"goToClass()\" >Go!</button>");
+							$('#result_name').text("NO RESULTS");    
+							$('#result_subject').text("");
+							$('#result_uniqueNumber').text("");
+							$('#result_instructor').text("");							
+							$('#result_link').html("");
 						}
 					},
 					error: function (jqXHR, exception) {
@@ -69,8 +68,6 @@ function addAllSchools(){
 					alert("Failed to get schools.");
 				}
 			});
-	
-	//alert("BUG to fix, combobox values will not load without this alert");
 	
 	for (var i = 0; i < schoolCount; i++){
 	$.ajax(
