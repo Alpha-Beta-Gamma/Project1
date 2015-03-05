@@ -11,6 +11,11 @@ public class Course {
    String professor;
    static HashMap<String, Double> distribution;
    Boolean percentBased;
+   Course originalCourse;
+   String originalName;
+   int originalNumber;
+   String originalProfessor;
+   HashMap originalDistribution;
 
    public Course(String name, int number, String professor, HashMap<String, Double> dist) {
       this.name = name;
@@ -18,6 +23,7 @@ public class Course {
       this.professor = professor;
       distribution = dist;
       this.percentBased = true;
+      setRestore();
    }
 
    public Course(String name, int number, String professor,
@@ -27,6 +33,23 @@ public class Course {
 	   this.professor = professor;
 	   this.distribution = dist;
 	   this.percentBased = percentBased;
+	   setRestore();
+   }
+   
+   //implements the momento design pattern, ensuring the instance can
+   //return to its original state
+   public void setRestore(){
+       originalName = name;
+       originalNumber = number;
+       originalProfessor = professor;
+       originalDistribution = distribution;
+   }
+   
+   public void restore(){
+	   name = originalName;
+           number = originalNumber;
+           professor = originalProfessor;
+           distribution = originalDistribution;
    }
    
    //getter methods
@@ -40,6 +63,10 @@ public class Course {
 
    public String getProfessor() {
       return professor;
+   }
+   
+   public boolean getPercentBased(){
+	   return percentBased;
    }
 
    //setter methods if edits are needed (shouldn't be needed, just in case)
