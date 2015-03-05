@@ -26,6 +26,7 @@ import com.google.common.base.Optional;
 import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.data.Calculation;
 import edu.csupomona.cs480.data.Class1;
+import edu.csupomona.cs480.data.ClassAttribute;
 import edu.csupomona.cs480.data.School;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.CalculationManager;
@@ -221,7 +222,8 @@ public class WebController {
 
    @RequestMapping(value = "/add_class", method = RequestMethod.POST)
    Class1 newClass(@RequestParam("name") String name, @RequestParam("id") String id, @RequestParam("instructor") String instructor, @RequestParam("school") String school,
-         @RequestParam("subject") String subject, @RequestParam("uniqueNumber") String uniqueNumber) {
+         @RequestParam("subject") String subject, @RequestParam("uniqueNumber") String uniqueNumber, @RequestParam("total") String total, @RequestParam("attNames") String[] attNames,
+         @RequestParam("attValues") String[] attValues) {
 
       Class1 clas = new Class1();
       clas.setId(schoolManager.numSchools() + id);
@@ -230,6 +232,12 @@ public class WebController {
       clas.setSchool(school);
       clas.setSubject(subject);
       clas.setUniqueNumber(uniqueNumber);
+      clas.setTotal(Double.parseDouble(total));
+
+      for (int i = 0; i < attNames.length; i++) {
+         ClassAttribute ca = new ClassAttribute(attNames[i], Double.parseDouble(attValues[i]));
+         clas.addClassAttributes(ca);
+      }
 
       classManager.updateClass(clas);
       return clas;
@@ -237,7 +245,8 @@ public class WebController {
 
    @RequestMapping(value = "/add_class_no_new_school", method = RequestMethod.POST)
    Class1 newClass2(@RequestParam("name") String name, @RequestParam("id") String id, @RequestParam("instructor") String instructor, @RequestParam("school") String school,
-         @RequestParam("subject") String subject, @RequestParam("uniqueNumber") String uniqueNumber) {
+         @RequestParam("subject") String subject, @RequestParam("uniqueNumber") String uniqueNumber, @RequestParam("total") String total, @RequestParam("attNames") String[] attNames,
+         @RequestParam("attValues") String[] attValues) {
 
       Class1 clas = new Class1();
       clas.setId(id);
@@ -246,6 +255,12 @@ public class WebController {
       clas.setSchool(school);
       clas.setSubject(subject);
       clas.setUniqueNumber(uniqueNumber);
+      clas.setTotal(Double.parseDouble(total));
+
+      for (int i = 0; i < attNames.length; i++) {
+         ClassAttribute ca = new ClassAttribute(attNames[i], Double.parseDouble(attValues[i]));
+         clas.addClassAttributes(ca);
+      }
 
       classManager.updateClass(clas);
       return clas;

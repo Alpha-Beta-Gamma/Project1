@@ -1,4 +1,23 @@
 
+var counterOfAttributes = 0;
+var limitOfAttributes = 20;
+
+function addInput(divName){
+	
+     if (counterOfAttributes >= limitOfAttributes)  {
+          alert("You have reached the limit of adding class inputs");
+     }
+     else {
+    	 counterOfAttributes++;
+         var newdiv = document.createElement('div');
+         var newdiv2 = document.createElement('div');
+         newdiv.innerHTML = "<input type='text' id='attName" + counterOfAttributes + "' placeholder='Name of Test/Assignment " + counterOfAttributes +  "' name='nameInputs'>";
+         document.getElementById(divName).appendChild(newdiv);
+         newdiv2.innerHTML = "<input type='text' id='attValue" + counterOfAttributes + "'placeholder='Value of Test/Assignment " + counterOfAttributes +  "' name='valueInputs'>";
+         document.getElementById(divName).appendChild(newdiv2);
+     }
+}
+
 function saveClass() {
 	
 	var schoolId = parseInt($('#schoolCombo').val());
@@ -7,10 +26,23 @@ function saveClass() {
 	var nameText = $('#nameText').val();
 	var subjectText = $('#subjectText').val();
 	var numberText = $('#numberText').val();
+	var total = $('#classValueText').val();
 	var instructorText = $('#instructorText').val();
+	var classTotalValue = $('#classValueText').val();
+	
+	var attributesNames = [];
+	var attributesValues = [];
+	
+	for	(var i = 0; i < counterOfAttributes; i++) {
+		var iplus = i+1;
+		attributesNames[attributesNames.length] = $('#attName' + iplus).val(); 
+		attributesValues[attributesValues.length] = $('#attValue' + iplus).val(); 
+	}
 
-	if ((schoolId === -1 && schoolText && uniqueText && nameText && subjectText && numberText && instructorText)
-			|| (uniqueText && nameText && subjectText && numberText && instructorText)){
+	//TODO add check to make sure all values for names/values are input by user
+	
+	if ((schoolId === -1 && schoolText && uniqueText && nameText && subjectText && numberText && instructorText && classValueText && total)
+			|| (uniqueText && nameText && subjectText && numberText && instructorText && classValueText && total)){
 		
 		if (schoolId === -1){
 			$.ajax(
@@ -27,7 +59,7 @@ function saveClass() {
 							alert("Failed to add the school. Please check the inputs.");
 						}
 					});
-			
+
 			$.ajax(
 				{
 					type : "POST",
@@ -38,14 +70,18 @@ function saveClass() {
 						"uniqueNumber" : uniqueText,
 						"subject" : subjectText,
 						"instructor" : instructorText,
-						"school" : schoolText
+						"school" : schoolText,
+						"total" : total,
+						"attNames" : attributesNames,
+						"attValues" : attributesValues
 					},
 					success : function(result) {
 						window.location.href = '/classlookup.html';
 					},async:false,
 					error: function (jqXHR, exception) {
-						alert("Failed to add the class. Please check the inputs.");
-					}
+						alert("Failed to add the class. Please check the inputs. You must have atleast one Test/Assignment.");
+					},
+					traditional: true
 				});
 		} else{
 			$.ajax(
@@ -58,19 +94,23 @@ function saveClass() {
 							"uniqueNumber" : uniqueText,
 							"subject" : subjectText,
 							"instructor" : instructorText,
-							"school" : schoolText
+							"school" : schoolText,
+							"total" : total,
+							"attNames" : attributesNames,
+							"attValues" : attributesValues
 						},
 						success : function(result) {
 							window.location.href = '/classlookup.html';
 						},
 						error: function (jqXHR, exception) {
-							alert("Failed to add the class. Please check the inputs.");
-						}
+							alert("Failed to add the class. Please check the inputs. You must have atleast one Test/Assignment.");
+						},
+						traditional: true
 					});
 		}
 		
 	} else {
-		alert("You missed a field, sorry.");
+		alert("You missed a field, please recheck.");
 	}
 	
 }
@@ -82,7 +122,7 @@ function goToClass(classid) {
 }
 
 function addAllSchools(){
-	//gets all the schools in database and adds them to the combobox for user selection upon search
+	//gets all the schools in database and adds them to the combobox for user selection
 	
 	var schoolCount = 0;
 	
@@ -99,8 +139,6 @@ function addAllSchools(){
 					alert("Failed to get schools.");
 				}
 			});
-	
-	//alert("BUG to fix, combobox values will not load without this alert");
 	
 	for (var i = 0; i < schoolCount; i++){
 	$.ajax(

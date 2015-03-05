@@ -141,6 +141,7 @@ if the user makes changes to the data, then it is saved when returning to the cl
 
 <body onload="addAllSchools()">
 	<div>
+	
 		<div class="form_description">
 			<h1>
 				<a>Create/<span>Edit</span> a <span>class!</span></a>
@@ -178,9 +179,20 @@ if the user makes changes to the data, then it is saved when returning to the cl
 				class="element text medium" type="text" maxlength="255" value="" />
 			<label class="description" for="element_2"></label><br> <input
 				id="instructorText" name="element_5" placeholder="Professor Name"
+				class="element text medium" type="text" maxlength="255" value="" /><br><br>
+				<label class="description" for="element_2">Total points class is out of, use 100 for percent based classes.</label><input
+				id="classValueText" name="element_5" placeholder="Total points"
 				class="element text medium" type="text" maxlength="255" value="" />
-			<label class="description" for="element_2"></label><br> <input
+			<label class="description" for="element_2"></label>
+			<br><br>
+
+     		<div id="dynamicInput"> <!--Area for class attribute input -->
+     		</div>
+     		<input type="button" value="Add a Test/Assignment" onClick="addInput('dynamicInput');">
+
+			<br> <input
 				type="button" value="Save" onclick="saveClass()">
+			<br> <input	type="button" value="Cancel" onclick="window.location.href = '/classlookup.html'">
 
 		</div>
 	</div>

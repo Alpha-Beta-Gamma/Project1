@@ -1,6 +1,8 @@
 package edu.csupomona.cs480.data;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Class1 {
 
@@ -11,6 +13,8 @@ public class Class1 {
    private String subject; //ex. CS, Art, Biology
    private String uniqueNumber; //should be unique number per school ex our class is 14403, needs to be string for some schools with letters maybe?
    private String instructor;
+   private double total;
+   private List<ClassAttribute> classAttributes; //holds all the data for the class attributes
    //private String sectionNumber; //not sure if necessary 
 
    /** The timestamp when the class is being created */
@@ -72,4 +76,31 @@ public class Class1 {
       this.instructor = instructor;
    }
 
+   public List<ClassAttribute> getClassAttributes() {
+      return classAttributes;
+   }
+
+   public void setClassAttributes(List<ClassAttribute> list) {
+      classAttributes = list;
+   }
+
+   public void clearClassAttributes() {
+      classAttributes = new ArrayList<ClassAttribute>();
+   }
+
+   public void addClassAttributes(ClassAttribute toAdd) {
+      if (classAttributes == null) {
+         classAttributes = new ArrayList<ClassAttribute>();
+      }
+
+      classAttributes.add(toAdd);
+   }
+
+   public double getTotal() {
+      return total;
+   }
+
+   public void setTotal(double total) {
+      this.total = total;
+   }
 }
