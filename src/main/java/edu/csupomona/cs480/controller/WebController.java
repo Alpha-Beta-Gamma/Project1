@@ -26,7 +26,7 @@ import com.google.common.base.Optional;
 import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.data.Calculation;
 import edu.csupomona.cs480.data.Class1;
-import edu.csupomona.cs480.data.ClassAttribute;
+import edu.csupomona.cs480.data.AttributeOfClass;
 import edu.csupomona.cs480.data.School;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.CalculationManager;
@@ -235,7 +235,7 @@ public class WebController {
       clas.setTotal(Double.parseDouble(total));
 
       for (int i = 0; i < attNames.length; i++) {
-         ClassAttribute ca = new ClassAttribute(attNames[i], Double.parseDouble(attValues[i]));
+         AttributeOfClass ca = new AttributeOfClass(attNames[i], Double.parseDouble(attValues[i]));
          clas.addClassAttributes(ca);
       }
 
@@ -258,7 +258,7 @@ public class WebController {
       clas.setTotal(Double.parseDouble(total));
 
       for (int i = 0; i < attNames.length; i++) {
-         ClassAttribute ca = new ClassAttribute(attNames[i], Double.parseDouble(attValues[i]));
+         AttributeOfClass ca = new AttributeOfClass(attNames[i], Double.parseDouble(attValues[i]));
          clas.addClassAttributes(ca);
       }
 

@@ -1,16 +1,20 @@
 package edu.csupomona.cs480.data;
 
-public class ClassAttribute {
+/**
+ * The basic Attribute object.
+ * Used for storing String Double pairs. Ex. Test1 50.0
+ */
+public class AttributeOfClass {
 
-   private String name;
-   private double value;
+   private String name; //name of assignment/test
+   private double value; //value of assignment relative to amount the class is worth
 
-   public ClassAttribute(String name, double value) {
+   public AttributeOfClass(String name, double value) {
       this.name = name;
       this.value = value;
    }
 
-   public ClassAttribute() {
+   public AttributeOfClass() {
       name = "";
       value = 0d;
    }

@@ -14,8 +14,7 @@ public class Class1 {
    private String uniqueNumber; //should be unique number per school ex our class is 14403, needs to be string for some schools with letters maybe?
    private String instructor;
    private double total;
-   private List<ClassAttribute> classAttributes; //holds all the data for the class attributes
-   //private String sectionNumber; //not sure if necessary 
+   private List<AttributeOfClass> classAttributes; //holds all the data for the class attributes
 
    /** The timestamp when the class is being created */
    private String creationTime = new Date(System.currentTimeMillis()).toString();
@@ -76,21 +75,21 @@ public class Class1 {
       this.instructor = instructor;
    }
 
-   public List<ClassAttribute> getClassAttributes() {
+   public List<AttributeOfClass> getClassAttributes() {
       return classAttributes;
    }
 
-   public void setClassAttributes(List<ClassAttribute> list) {
+   public void setClassAttributes(List<AttributeOfClass> list) {
       classAttributes = list;
    }
 
    public void clearClassAttributes() {
-      classAttributes = new ArrayList<ClassAttribute>();
+      classAttributes = new ArrayList<AttributeOfClass>();
    }
 
-   public void addClassAttributes(ClassAttribute toAdd) {
+   public void addClassAttributes(AttributeOfClass toAdd) {
       if (classAttributes == null) {
-         classAttributes = new ArrayList<ClassAttribute>();
+         classAttributes = new ArrayList<AttributeOfClass>();
       }
 
       classAttributes.add(toAdd);

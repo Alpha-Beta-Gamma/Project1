@@ -37,5 +37,4 @@ public class School {
    public void setCreationTime(String creationTime) {
       this.creationTime = creationTime;
    }
-
 }
