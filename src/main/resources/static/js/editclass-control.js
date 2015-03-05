@@ -1,6 +1,7 @@
 
 var counterOfAttributes = 0;
 var limitOfAttributes = 20;
+var classId = ""; //use this to find out what data to load for this page
 
 function addInput(divName){
 	
@@ -115,10 +116,9 @@ function saveClass() {
 	
 }
 
-function goToClass(classid) {
-	
-	//USE CLASSID TO DISPLAY CLASS INFO
-	window.location.href = '/classlookup.html';
+function goToCreateClass(id) {
+	classId = id;
+	window.location.href = "/editclass.html";
 }
 
 function addAllSchools(){

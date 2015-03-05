@@ -5,42 +5,7 @@
 	    <title>Calculation</title>
 	    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	    <script src="/js/calculation-control.js"></script>
-            <SCRIPT TYPE="text/javascript">
-// copyright 1999 Idocs, Inc. http://www.idocs.com
-// Distribute this script freely but keep this notice in place
-function numbersonly(myfield, e, dec)
-{
-var key;
-var keychar;
-
-if (window.event)
-   key = window.event.keyCode;
-else if (e)
-   key = e.which;
-else
-   return true;
-keychar = String.fromCharCode(key);
-
-// control keys
-if ((key==null) || (key==0) || (key==8) || 
-    (key==9) || (key==13) || (key==27) )
-   return true;
-
-// numbers
-else if ((("0123456789").indexOf(keychar) > -1))
-   return true;
-
-// decimal point jump
-else if (dec && (keychar == "."))
-   {
-   myfield.form.elements[dec].focus();
-   return false;
-   }
-else
-   return false;
-}
-
-</SCRIPT>
+	    <script src="/js/editclass-control.js"></script>
 </head>
 
 	<body onload="getSchoolAndClass()">
@@ -48,17 +13,14 @@ else
             <label id="school"></label>
             <p id="class_number"></p>
             <div>
-            <select id="calculatorCombo">
-                <option value="" selected="selected"></option>
-            </select>
-                <button onclick="createGradeInput()">Create</button>
-                <button onclick="selectGradeInput()">Select</button>
+                
             </div>
             <div>
             <table border="1">
                 <tr>
                     <td></td>
-                    <td>Type</td>
+                    <td>Name</td>
+                    <td>Value</td>
                     <td>Your Score</td>
                 </tr>
                 <tr>
@@ -94,6 +56,7 @@ else
 
             </table>
             <div>
+                <button onclick="goToCreateClass(classId)">Edit Class</button>
                 <button onclick="calculateGrade()">Calculate!</button>
             </div>
             

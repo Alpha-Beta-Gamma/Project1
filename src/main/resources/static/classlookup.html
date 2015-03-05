@@ -17,6 +17,8 @@ then the user is moved to the calculationpage.html
 	    <title>GradeBane - Find Your Class</title>
 	    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	    <script src="/js/classlookup-control.js"></script>
+	    <script src="/js/editclass-control.js"></script>
+	    <script src="/js/calculation-control.js"></script>
 	</head>
 
 	<body id="main_body" onload="addAllSchools()">
@@ -31,11 +33,10 @@ then the user is moved to the calculationpage.html
 			<div>
 				<select class="element select large" id="schoolCombo" name="element_1"> 
 					<option value="" selected="selected"></option><!-- VALUE WILL BE SCHOOL ID---->
-					<option value="-1" >Other...</option>
 				</select>
 			</div>
 			
-			<p class="guidelines" id="guide_1"><small>If your school is not listed it may not have any classes created for your school, you can create one using the create button.</small></p> 
+			<p class="guidelines" id="guide_1"><small>If your school is not listed it may not have any classes created for your school, you can create one using the Class not Found? button below.</small></p> 
 				
 			<label class="description" for="element_2">Search (Unique Class# only accepted at this time) our class is 14403 go ahead, give it a go</label>
 				
@@ -65,7 +66,6 @@ then the user is moved to the calculationpage.html
 		            <td><label id="result_uniqueNumber"></td>
 		            <td><label id="result_instructor"></td>
 		            <td><label id="result_link"></td>
-                   
 		        </tr>
 		    </table>
 	    </div>
