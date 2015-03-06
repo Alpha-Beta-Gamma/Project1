@@ -113,7 +113,6 @@ function saveClass() {
 	} else {
 		alert("You missed a field, please recheck.");
 	}
-	
 }
 
 function goToCreateClass(id) {
@@ -123,7 +122,7 @@ function goToCreateClass(id) {
 function addAllSchools(){
 	//gets all the schools in database and adds them to the combobox for user selection
 	
-	classId = classId = location.search.split('id=')[1];
+	classId = classId = location.search.split('id=')[1]; //Gets what classid we need
 	
 	var schoolCount = 0;
 	

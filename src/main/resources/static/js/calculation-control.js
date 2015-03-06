@@ -69,4 +69,5 @@ function calculateGrade()
 {
 	alert(classId);
 	//TODO will have to use loop to get each id="score + NUMBER"
+	//can use example from loading text into combo boxs
 }
