@@ -2,8 +2,11 @@
 var classId = ""; //use this to find out what data to load for this page
 
 function goCalcPage(id) {
-	classId = id;
-	window.location.href = "/calculationpage.html";
+	window.location.href = "/calculationpage.html?id=" + id;
+}
+
+function goToClassLookUp(){
+	window.location.href = "/classlookup.html";
 }
 
 // copyright 1999 Idocs, Inc. http://www.idocs.com
@@ -39,23 +42,31 @@ function numbersonly(myfield, e, dec)
 	   return false;
 }
 
+//adds all data to table
+function addData(){
+	
+	classId = location.search.split('id=')[1]; //gets what classid we need
+	
+	if (classId == "undefined"){
+		alert("There was a problem, no classId was set!")
+	} else {
+		var newTable = document.createElement("TABLE");
+		
+		var table = "<tr><td></td><td>Name     </td><td>Value    </td><td>Your Score</td></tr>";
+		
+		//TODO run for loop for each attribute in classes attibute list and add row to above table 
+		//for (int i = 0; i < ????; i++)
+		//table += "<tr><td></td><td>THENAME</td><td>THE VALUE</td><td><input id="score" + i + "" onKeyPress="return numbersonly(this, event)" value=""/></td></tr>";
+		
+		newTable.innerHTML = table;
+		
+		
+		document.getElementById('dynamicInput').appendChild(newTable);
+	}
+}
+
 function calculateGrade()
 {
 	alert(classId);
-    
-}
-function selectGradeInput()
-{
-    
-}
-function createGradeInput()
-{
-	alert(classId);
-    window.location.href = '/editclass.html';
-}
-function getSchoolAndClass()
-{
-//var name = window.location.search;
-//document.write(name);
-//$('#school').text(name);
+	//TODO will have to use loop to get each id="score + NUMBER"
 }

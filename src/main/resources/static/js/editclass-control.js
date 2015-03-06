@@ -117,12 +117,13 @@ function saveClass() {
 }
 
 function goToCreateClass(id) {
-	classId = id;
-	window.location.href = "/editclass.html";
+	window.location.href = "/editclass.html?id=" + id;
 }
 
 function addAllSchools(){
 	//gets all the schools in database and adds them to the combobox for user selection
+	
+	classId = classId = location.search.split('id=')[1];
 	
 	var schoolCount = 0;
 	
