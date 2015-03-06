@@ -18,10 +18,88 @@ then the user is moved to the calculationpage.html
 	    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	    <script src="/js/classlookup-control.js"></script>
 	</head>
+	
+	<style>
+		@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+		@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+		
+		body{
+			background-color: black;
+			color:white;
+			font-family: 'Exo', sans-serif;
+			position: absolute;
+			top: calc(50% - 400px);
+			left: calc(50% - 150px);
+			height: 150px;
+			width: 350px;
+			padding: 10px;
+			z-index: 2;
+			background-size: cover;
+			background-image: url("images/image_4.jpg");
+				
+		}
+		
+		.body{
+			-webkit-filter: blur(5px);
+		}
+		
+		h1{
+			color: purple;
+		}
+		
+		.table{
+			position: absolute;
+			top: calc(50% - -500px);
+			left: calc(50% - 185px);
+			height: 150px;
+			width: 350px;
+			padding: 10px;
+			z-index: 2;
+		}
+		
+		button{
+			width: 260px;
+			height: 35px;
+			background: black;
+			border: 1px solid #fff;
+			cursor: pointer;
+			border-radius: 2px;
+			color: white;
+			font-family: 'Exo', sans-serif;
+			font-size: 16px;
+			font-weight: 400;
+			padding: 6px;
+			margin-top: 10px;
+		}
 
+		input{
+			width: 260px;
+			height: 30px;
+			background: transparent;
+			border: 1px solid rgba(255, 255, 255, 0.6);
+			border-radius: 2px;
+			color: white;
+			font-family: 'Exo', sans-serif;
+			font-size: 16px;
+			font-weight: 400;
+			padding: 4px;
+			margin-top: 12px;
+		}
+		
+		span{
+			color: white;
+			font-weight: 400;
+			padding: 6px;
+			margin-top: 10px;
+		}
+		
+	</style>
+	
+<div class="body"></div>
 	<body id="main_body" onload="addAllSchools()">
+			
 		<div>
-			<h1><a>Search Your Class!</a></h1>
+			<h1><a>Search<span> Your </span>Class!</a></h1>
 	
 			<div class="form_description">
 				<h2>please.. search.. enjoy</h2>
@@ -39,15 +117,15 @@ then the user is moved to the calculationpage.html
 			<label class="description" for="element_2">Search (Unique Class# only accepted at this time) our class is 14403 go ahead, give it a go</label>
 				
 			<div>
-				<input id="searchText" name="element_2" class="element text medium" type="text" maxlength="255" value=""/> 
+				<input id="searchText" name="element_2" class="element text medium" placeholder="Unique Class #" type="text" maxlength="255" value=""/> 
 			</div> 
 					
-			<button onclick="searchForClass()">Search</button>
+			<button onclick="searchForClass()">Search</button><br>
 			<button onclick="goToCreateClass()">Class not Found?</button>
-	
 		</div>
+	
 		
-		<div>
+		<div class = "table">
 		    <label>Class Search Results</label>
 		    
 		    <table border="1">
@@ -66,6 +144,7 @@ then the user is moved to the calculationpage.html
 		            <td><label id="result_link"></td>
 		        </tr>
 		    </table>
-	    </div>
+		    </div>
+		
 	</body>
 </html>
