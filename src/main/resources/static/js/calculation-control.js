@@ -105,7 +105,7 @@ function calculateGrade()
 	var totalGot = 0;
 	
 	for (var i = 0; i < totalAtt; i++){
-		totalGot += parseInt($('#score' + i).val());
+		totalGot += parseInt($('#score' + i).val()) || 0;
 	}
 	
 	var wantedGrade = $('#gradewanted').val();

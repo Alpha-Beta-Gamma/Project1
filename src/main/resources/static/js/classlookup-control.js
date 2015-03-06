@@ -2,6 +2,14 @@
 var classId = "";
 var name = "";
 
+function goToClassLookUp(){
+	window.location.href = "/classlookup.html";
+}
+
+function goToCreateClass(){
+	window.location.href = "/editclass.html";
+}
+
 function searchForClass() {
 	
 	var schoolId = parseInt($('#schoolCombo').val());

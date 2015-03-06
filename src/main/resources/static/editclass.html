@@ -13,7 +13,6 @@ if the user makes changes to the data, then it is saved when returning to the cl
 		<title>GradeBane - Edit Class</title>
 		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src="/js/editclass-control.js"></script>
-		<script src="/js/classlookup-control.js"></script>
 	</head>
 
 	<style>
@@ -150,7 +149,7 @@ if the user makes changes to the data, then it is saved when returning to the cl
 
 			<label class="description" for="element_1">School </label>
 			<select	class="element select large" id="schoolCombo" name="element_1">
-				<option value="" selected="selected"></option>
+				<option value="" selected=""></option>
 				<!-- VALUE WILL BE SCHOOL ID---->
 				<option value="-1">New school...</option>
 			</select>
@@ -174,9 +173,6 @@ if the user makes changes to the data, then it is saved when returning to the cl
 				class="element text medium" type="text" maxlength="255" value="" />
 			<label class="description" for="element_2"></label><br> <input
 				id="subjectText" name="element_3" placeholder="Subject"
-				class="element text medium" type="text" maxlength="255" value="" />
-			<label class="description" for="element_2"></label><br> <input
-				id="numberText" name="element_4" placeholder="Course Number"
 				class="element text medium" type="text" maxlength="255" value="" />
 			<label class="description" for="element_2"></label><br> <input
 				id="instructorText" name="element_5" placeholder="Professor Name"

@@ -122,7 +122,7 @@ function goToCreateClass(id) {
 function addAllSchools(){
 	//gets all the schools in database and adds them to the combobox for user selection
 	
-	classId = classId = location.search.split('id=')[1]; //Gets what classid we need
+	classId = location.search.split('id=')[1]; //Gets what classid we need
 	
 	var schoolCount = 0;
 	
@@ -141,29 +141,68 @@ function addAllSchools(){
 			});
 	
 	for (var i = 0; i < schoolCount; i++){
-	$.ajax(
-			{
-				type : "GET",
-				url  : "/schools",
-				data : {
-					"schoolId" : i
-				},
-				success : function(result) {
+		$.ajax(
+				{
+					type : "GET",
+					url  : "/schools",
+					data : {
+						"schoolId" : i
+					},
+					success : function(result) {
+	
+						    var combo = document.getElementById("schoolCombo");
+						     
+						    var option = document.createElement("option");
+						    option.text = result.name; 
+						    option.value = result.id;
+						    try {
+						        combo.add(option, null); //Standard
+						    }catch(error) {
+						        combo.add(option); // IE only
+						    }						
+					},async:false,
+					error: function (jqXHR, exception) {
+						alert("Failed to get schools for combobox.");
+					}
+			});
+	}
+	
+	fillInFields();
+}
 
-					    var combo = document.getElementById("schoolCombo");
-					     
-					    var option = document.createElement("option");
-					    option.text = result.name; 
-					    option.value = result.id;
-					    try {
-					        combo.add(option, null); //Standard
-					    }catch(error) {
-					        combo.add(option); // IE only
-					    }						
-				},
-				error: function (jqXHR, exception) {
-					alert("Failed to get schools for combobox.");
-				}
-		});
+function fillInFields(){
+	classId = location.search.split('id=')[1];
+	
+	if (classId == "undefined"){
+		
+	} else {
+	
+		var array = classId.split("_");
+		var schoolId = array[0];
+		var unique = array[1];
+	
+		$.ajax(
+				{
+					type : "GET",
+					url  : "/classes/" + classId,
+					data : {
+					},
+					success : function(result) {
+						document.getElementById("schoolCombo").value = schoolId; //by id or text?
+						document.getElementById("uniqueText").value = unique;
+						document.getElementById("nameText").value = result.name;
+						document.getElementById("subjectText").value = result.subject;
+						document.getElementById("instructorText").value = result.instructor;	
+						document.getElementById("classValueText").value = result.total;						
+					},
+					error: function (jqXHR, exception) {
+						alert("Failed to get class.");
+					}
+				});
+		
+		//TODO add way to add assignment/tests dynamically
+		
 	}
 }
+
+
