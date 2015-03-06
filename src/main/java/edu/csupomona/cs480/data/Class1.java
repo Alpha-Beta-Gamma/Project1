@@ -76,6 +76,10 @@ public class Class1 {
    }
 
    public List<AttributeOfClass> getClassAttributes() {
+      if (classAttributes == null) {
+         classAttributes = new ArrayList<AttributeOfClass>();
+      }
+
       return classAttributes;
    }
 

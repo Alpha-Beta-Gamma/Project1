@@ -9,6 +9,10 @@ function goToClassLookUp(){
 	window.location.href = "/classlookup.html";
 }
 
+function goToCreateClass(id) {
+	window.location.href = "/editclass.html?id=" + id;
+}
+
 // copyright 1999 Idocs, Inc. http://www.idocs.com
 // Distribute this script freely but keep this notice in place
 function numbersonly(myfield, e, dec)
@@ -45,29 +49,57 @@ function numbersonly(myfield, e, dec)
 //adds all data to table
 function addData(){
 	
+	
 	classId = location.search.split('id=')[1]; //gets what classid we need
 	
 	if (classId == "undefined"){
 		alert("There was a problem, no classId was set!")
 	} else {
 		var newTable = document.createElement("TABLE");
-		
 		var table = "<tr><td></td><td>Name     </td><td>Value    </td><td>Your Score</td></tr>";
+		var attCount = 0;
 		
-		//TODO run for loop for each attribute in classes attibute list and add row to above table 
-		//for (int i = 0; i < ????; i++)
-		//table += "<tr><td></td><td>THENAME</td><td>THE VALUE</td><td><input id="score" + i + "" onKeyPress="return numbersonly(this, event)" value=""/></td></tr>";
+		$.ajax(
+				{
+					type : "GET",
+					url  : "/attcount/" + classId,
+					data : {
+					},
+					success : function(result) {
+						attCount = result;
+					},async:false,
+					error: function (jqXHR, exception) {
+						alert("Failed to get class attributes.");
+					}
+				});
 		
+		for (var i = 0; i < attCount; i++){
+			$.ajax(
+					{
+						type : "GET",
+						url  : "/classAtt",
+						data : {
+							"classId" : classId,
+							"index" : i
+						},
+						success : function(result) {
+							table += '<tr><td></td><td>' + result.name + '</td><td>' + result.value + '</td><td><input id="score' + i + '" onKeyPress="return numbersonly(this, event)" value=""/></td></tr>';
+						},async:false,
+						error: function (jqXHR, exception) {
+							alert("Failed to get class attributes. Error 2.");
+						}
+				});
+		}
+
 		newTable.innerHTML = table;
-		
-		
 		document.getElementById('dynamicInput').appendChild(newTable);
 	}
+
 }
 
 function calculateGrade()
 {
 	alert(classId);
-	//TODO will have to use loop to get each id="score + NUMBER"
+	//TODO will have to use loop to get each id="score + INDEX"
 	//can use example from loading text into combo boxs
 }

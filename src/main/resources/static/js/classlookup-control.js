@@ -39,6 +39,10 @@ function searchForClass() {
 	}
 }
 
+function goCalcPage(id) {
+	window.location.href = "/calculationpage.html?id=" + id;
+}
+
 function addAllSchools(){
 	//gets all the schools in database and adds them to the combobox for user selection upon search
 	

@@ -173,6 +173,11 @@ public class WebController {
       return clas;
    }
 
+   @RequestMapping(value = "/classAtt", method = RequestMethod.GET)
+   AttributeOfClass getClass(@RequestParam("classId") String classId, @RequestParam("index") String index) {
+      return classManager.getClass(classId).getClassAttributes().get(Integer.parseInt(index));
+   }
+
    /**
     * This is an example of sending an HTTP POST request to
     * update a user's information (or create the user if not
@@ -269,6 +274,11 @@ public class WebController {
    @RequestMapping(value = "/schoolcount", method = RequestMethod.GET)
    int schoolCount() {
       return schoolManager.numSchools();
+   }
+
+   @RequestMapping(value = "/attcount/{id}", method = RequestMethod.GET)
+   int atCount(@PathVariable("id") String classId) {
+      return classManager.getClass(classId).getClassAttributes().size();
    }
 
    /**
