@@ -48,7 +48,7 @@ function numbersonly(myfield, e, dec)
 
 //adds all data to table
 function addData(){
-	
+	alert("HI2");
 	
 	classId = location.search.split('id=')[1]; //gets what classid we need
 	
@@ -74,6 +74,7 @@ function addData(){
 				});
 		
 		for (var i = 0; i < attCount; i++){
+			alert("HI1");
 			$.ajax(
 					{
 						type : "GET",
