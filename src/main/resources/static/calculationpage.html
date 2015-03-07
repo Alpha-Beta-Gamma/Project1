@@ -7,15 +7,89 @@
 		    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 		    <script src="/js/calculation-control.js"></script>
 	</head>
+	
+	<style>
+		@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+		@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300)	;
+		
+		body{
+			background-color: black;
+			font-family: 'Exo', sans-serif;
+			font-size: 12px;
+			background-image:
+				url("http://www.hdwallpapers3d.com/wp-content/uploads/2013/04/Red_Background__Black__White_by_XFecal_FaceX.jpg");
+		}
+		
+		.blur{
+			-webkit-filter: blur(5px);
+		}
+		
+		.table{
+			position: absolute;
+			top: calc(50% - 100px);
+			left: calc(50% - 185px);
+			height: 150px;
+			width: 400px;
+			padding: 10px;
+			z-index: 2;
+			background-size: cover;
+		}
+		
+		table{
+			color:white;
+		}
+		
+		button{
+			width: 125px;
+			height: 35px;
+			background: black;
+			border: 1px solid #fff;
+			cursor: pointer;
+			border-radius: 2px;
+			color: white;
+			font-family: 'Exo', sans-serif;
+			font-size: 16px;
+			font-weight: 400;
+			padding: 6px;
+			margin-top: 10px;
+		}
+		
+		span{
+			color: white;
+			font-family: 'Exo', sans-serif;
+			position: absolute;
+			top: calc(50% - 150px);
+			left: calc(50% - 120px);
+		}
+		
+		h1{
+			color: white;
+			font-family: 'Exo', sans-serif;
+			position: absolute;
+			top: calc(50% - 230px);
+			left: calc(50% - 100px);
+			float: left;
+			font-size: 35px;
+			font-weight: 200;
+		}
+		
+		span1{
+			color:red;
+		}
+		
+	</style>
 
 	<body onload="addData()">
-            <p>Input all the scores you have received thus far.</p>
+	<div class = "blur"></div>
+		<div>
+			<div class = "title">
+			<h1>Input <span1>Grades</span1></h1><br>
+            <p><span>Input all the scores you have received thus far.</span></p>
             <label id="school"></label>
             <p id="class_number"></p>
-            <div></div>
+            </div>
             
-            <div>
-            
+            <div class = "table">
             <div id="dynamicInput"> <!--Area for class attribute input --> </div>
 
             <div>
@@ -32,6 +106,7 @@
                 <tr></tr>
             </table>
             </div>
+    	</div>
 	</body>
 
 </html>
