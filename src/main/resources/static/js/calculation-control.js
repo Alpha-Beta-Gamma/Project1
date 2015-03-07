@@ -158,6 +158,10 @@ function calculateGrade()
 	if (output == ""){
 		output = "You need " + missing + " more points to get the grade you desire.";
 	}
+	
+	if (missing < 0){
+		output = "You've already reached your desired grade!";
+	}
 
 	document.getElementById('result_score').innerHTML = output;
 }

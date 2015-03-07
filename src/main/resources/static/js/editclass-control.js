@@ -1,6 +1,6 @@
 
 var counterOfAttributes = 0;
-var limitOfAttributes = 20;
+var limitOfAttributes = 40;
 var classId = ""; //use this to find out what data to load for this page
 
 function addInput(divName){
@@ -26,7 +26,6 @@ function saveClass() {
 	var uniqueText = $('#uniqueText').val();
 	var nameText = $('#nameText').val();
 	var subjectText = $('#subjectText').val();
-	var numberText = $('#numberText').val();
 	var total = $('#classValueText').val();
 	var instructorText = $('#instructorText').val();
 	var classTotalValue = $('#classValueText').val();
@@ -42,8 +41,8 @@ function saveClass() {
 
 	//TODO add check to make sure all values for names/values are input by user
 	
-	if ((schoolId === -1 && schoolText && uniqueText && nameText && subjectText && numberText && instructorText && classValueText && total)
-			|| (uniqueText && nameText && subjectText && numberText && instructorText && classValueText && total)){
+	if ((schoolId === -1 && schoolText && uniqueText && nameText && subjectText && instructorText && classValueText && total)
+			|| (uniqueText && nameText && subjectText && instructorText && classValueText && total)){
 		
 		if (schoolId === -1){
 			$.ajax(
@@ -188,7 +187,7 @@ function fillInFields(){
 					data : {
 					},
 					success : function(result) {
-						document.getElementById("schoolCombo").value = schoolId; //by id or text?
+						document.getElementById("schoolCombo").value = schoolId;
 						document.getElementById("uniqueText").value = unique;
 						document.getElementById("nameText").value = result.name;
 						document.getElementById("subjectText").value = result.subject;
@@ -200,9 +199,52 @@ function fillInFields(){
 					}
 				});
 		
-		//TODO add way to add assignment/tests dynamically
-		
+		addAttributes();
 	}
 }
 
+function addAttributes(){
+	var totalAtt = 0;
+	
+	$.ajax(
+			{
+				type : "GET",
+				url  : "/attcount/" + classId,
+				data : {
+				},
+				success : function(result) {
+					totalAtt = result;
+				},async:false,
+				error: function (jqXHR, exception) {
+					alert("Failed to get class attributes.");
+				}
+			});
+	
+	for (var i = 0; i < totalAtt; i++){
+		$.ajax(
+				{
+					type : "GET",
+					url  : "/classAtt",
+					data : {
+						"classId" : classId,
+						"index" : i
+					},
+					success : function(result) {
+						counterOfAttributes++;
+						
+						var newdiv = document.createElement('div');
+				        var newdiv2 = document.createElement('div');
+				        newdiv.innerHTML = '<input type="text" id="attName' + counterOfAttributes + '" placeholder="Name of Test/Assignment ' + counterOfAttributes +  '" name="nameInputs" value="' + result.name + '">';
+				        document.getElementById('dynamicInput').appendChild(newdiv);
+				        newdiv2.innerHTML = "<input type='text' id='attValue" + counterOfAttributes + "'placeholder='Value of Test/Assignment " + counterOfAttributes +  "' name='valueInputs' value='" + result.value + "'>";
+				        document.getElementById('dynamicInput').appendChild(newdiv2);
+				        
+					},async:false,
+					error: function (jqXHR, exception) {
+						alert("Failed to get class attributes. Error 2.");
+					}
+			});
+	}
+	
+}
 

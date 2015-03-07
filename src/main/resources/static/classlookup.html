@@ -49,7 +49,7 @@ then the user is moved to the calculationpage.html
 		
 		.table{
 			position: absolute;
-			top: calc(50% - -500px);
+			top: calc(50% - -400px);
 			left: calc(50% - 185px);
 			height: 150px;
 			width: 350px;
@@ -102,8 +102,7 @@ then the user is moved to the calculationpage.html
 			<h1><a>Search<span> Your </span>Class!</a></h1>
 	
 			<div class="form_description">
-				<h2>please.. search.. enjoy</h2>
-				<p>Search For your class! Yes, please! This should display links to matched classes below once backend is done :] which will really be links to calculationpage.html with class id in POST</p>
+				<p>Select your school, type in your class number, and thats it, you can now start calculating the grades you need to get! If there's no results or your school isn't listed, feel free to create one with the "Class not Found?" button below. Enjoy.</p>
 			</div>
 			
 			<div>
@@ -111,16 +110,14 @@ then the user is moved to the calculationpage.html
 					<option value="" selected="selected"></option><!-- VALUE WILL BE SCHOOL ID---->
 				</select>
 			</div>
-			
-			<p class="guidelines" id="guide_1"><small>If your school is not listed it may not have any classes created for your school, you can create one using the Class not Found? button below.</small></p> 
 				
-			<label class="description" for="element_2">Search (Unique Class# only accepted at this time) our class is 14403 go ahead, give it a go</label>
+			<label class="description" for="element_2"><br>Class number only accepted at this time. Demo class is 14403 go ahead, give it a go!</label>
 				
 			<div>
 				<input id="searchText" name="element_2" class="element text medium" placeholder="Unique Class #" type="text" maxlength="255" value=""/> 
 			</div> 
 					
-			<button onclick="searchForClass()">Search</button><br>
+			<button onclick="searchForClass()">Search &#128270</button><br>
 			<button onclick="goToCreateClass()">Class not Found?</button>
 		</div>
 	
