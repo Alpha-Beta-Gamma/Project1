@@ -36,10 +36,9 @@ if the user makes changes to the data, then it is saved when returning to the cl
 			bottom: -40px;
 			width: auto;
 			height: auto;
-			background-image:
-				url("images/image_3.jpg");
+			background-image: url("images/image_3.jpg");
 			background-size: cover;
-			//-webkit-filter: blur(5px);
+			-webkit-filter: blur(5px);
 			z-index: 0;
 		}
 		
@@ -112,7 +111,7 @@ if the user makes changes to the data, then it is saved when returning to the cl
 		
 		.form_description {
 			position: absolute;
-			top: calc(10% - 75px);
+			top: calc(10% - -98px);
 			left: calc(50% - 50px);
 			height: 150px;
 			width: 350px;
@@ -140,7 +139,6 @@ if the user makes changes to the data, then it is saved when returning to the cl
 	</style>
 
 <body onload="addAllSchools()">
-	<div class="body">
 		<div class="form_description">
 			<h1>
 				<a>Create/<span>Edit</span> a <span>class!</span></a>
@@ -161,7 +159,7 @@ if the user makes changes to the data, then it is saved when returning to the cl
 				class="element text medium" type="text" maxlength="255" value="" />
 
 		</div>
-
+		<div class="body"></div>
 		<div class="create">
 
 			<input id="uniqueText" name="element_2" placeholder="Class #"
@@ -189,6 +187,6 @@ if the user makes changes to the data, then it is saved when returning to the cl
 			<br> <input	type="button" value="Cancel" onclick="window.history.go(-1)">
 
 		</div>
-	</div>
+
 </body>
 </html>

@@ -160,6 +160,15 @@ body{
 ::-moz-input-placeholder{
    color: rgba(255,255,255,0.6);
 }
+
+p{
+	font-family: 'Exo', sans-serif;
+	color: white;
+	position: absolute;
+	top: calc(50% - -250px);
+	left: calc(50% - 250px);
+}
+
 </style>
 
 <script src="js/prefixfree.min.js"></script>
@@ -169,21 +178,20 @@ body{
 
 <body>
 
+
+
   <div class="body"></div>
 		<div class="grad"></div>
 		<div class="header">
-			<div>Grade<span>Bane</span><br></div>
-			
-			<!--
-			The grade calculation website! Want to know exactly what you need on final exam to pass the class? You've come to the right place!
-			Here, you'll find all the tools you need to know what score you need on which exam, and much more! Here at GradeBane we think things
-			that are free are best, and that's why GradeBanes free to use, enjoy! 
-			-->
-			
-			
+			<div>Grade<span>Bane</span><br></div>	
+
 		</div>
 		<br>
 		<div class="login">
+				<p>The grade calculation website! Want to know exactly what you need on final exam to pass the class? You've come to the right place!
+				Here, you'll find all the tools you need to know what score you need on which exam, and much more! Here at GradeBane we think things
+				that are free are best, and that's why GradeBanes free to use, enjoy!</p>
+		
 				<input type="text" id="email" placeholder="email" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" name="usermail"><br>
 				<input type="password" id="password" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" placeholder="password" name="password"><br>
 				<input type="button" value="Login" id="login" onclick="attemptlogin()">
