@@ -8,8 +8,8 @@ function attemptlogin() {
 	} else if (!validateEmail(email)) {
 		alert("Email is not a valid email.");
 	} else {
-	
-		alert("Function not available yet");
+	window.location.href = '/classlookup.html';
+		//alert("Function not available yet");
 		
         /*
 
