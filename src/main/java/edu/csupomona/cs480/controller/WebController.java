@@ -1,5 +1,6 @@
 package edu.csupomona.cs480.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -27,10 +28,13 @@ import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.data.Calculation;
 import edu.csupomona.cs480.data.Class1;
 import edu.csupomona.cs480.data.AttributeOfClass;
+import edu.csupomona.cs480.data.CourseNonPercentBase;
+import edu.csupomona.cs480.data.CoursePercentBase;
 import edu.csupomona.cs480.data.School;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.CalculationManager;
 import edu.csupomona.cs480.data.provider.ClassManager;
+import edu.csupomona.cs480.data.provider.CourseNonPercentBaseManager;
 import edu.csupomona.cs480.data.provider.SchoolManager;
 import edu.csupomona.cs480.data.provider.UserManager;
 
@@ -63,6 +67,10 @@ public class WebController {
 
    @Autowired
    private CalculationManager calculationManager;
+   
+   @Autowired
+   private CourseNonPercentBaseManager courseManager;
+      
 
    /**
     * This is a simple example of how the HTTP API works.
@@ -224,7 +232,23 @@ public class WebController {
       schoolManager.updateSchool(school);
       return school;
    }
+   @RequestMapping(value = "/calculate", method = RequestMethod.POST)
+   double calc(@RequestParam("goal") int goal, @RequestParam("attNames") String[] attNames, @RequestParam("attValues") Integer[] attValues, @RequestParam("total") Integer[] total){
+      CourseNonPercentBase course;   
+      double scoreTot = 0.0;
+      HashMap<String, Double> dist = new HashMap<String, Double>();
+       HashMap<String, Double> max = new HashMap<String, Double>();
+      for(int i = 0; i < attNames.length; i++)
+      {
+         dist.put(attNames[i], (double) attValues[i]);
+         max.put(attNames[i], (double) total[i]);
+      }
+         course = new CourseNonPercentBase(dist, max);
+         course.finalCalculate(goal);
+         scoreTot = course.getScore();
+          return scoreTot;     
 
+   }
    @RequestMapping(value = "/add_class", method = RequestMethod.POST)
    Class1 newClass(@RequestParam("name") String name, @RequestParam("id") String id, @RequestParam("instructor") String instructor, @RequestParam("school") String school,
          @RequestParam("subject") String subject, @RequestParam("uniqueNumber") String uniqueNumber, @RequestParam("total") String total, @RequestParam("attNames") String[] attNames,
@@ -350,4 +374,5 @@ public class WebController {
       // with the URL: http://localhost:8080/
       return "free page";
    }
+
 }

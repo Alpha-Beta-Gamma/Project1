@@ -8,8 +8,10 @@ import org.springframework.context.annotation.Configuration;
 
 import edu.csupomona.cs480.data.provider.CalculationManager;
 import edu.csupomona.cs480.data.provider.ClassManager;
+import edu.csupomona.cs480.data.provider.CourseNonPercentBaseManager;
 import edu.csupomona.cs480.data.provider.FSCalculationManager;
 import edu.csupomona.cs480.data.provider.FSClassManager;
+import edu.csupomona.cs480.data.provider.FSCourseNonPercentBaseManager;
 import edu.csupomona.cs480.data.provider.FSSchoolManager;
 import edu.csupomona.cs480.data.provider.FSUserManager;
 import edu.csupomona.cs480.data.provider.SchoolManager;
@@ -48,6 +50,12 @@ public class App {
    public CalculationManager calculationManager() {
       CalculationManager calculationManager = new FSCalculationManager();
       return calculationManager;
+   }
+   
+   @Bean 
+   public CourseNonPercentBaseManager courseManager(){
+      CourseNonPercentBaseManager courseManager = new FSCourseNonPercentBaseManager();
+      return courseManager;
    }
    /**
     * This is the running main method for the web application.

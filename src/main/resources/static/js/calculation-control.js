@@ -2,6 +2,7 @@
 var classId = ""; //use this to find out what data to load for this page
 var totalAtt = 0;
 
+
 function goCalcPage(id) {
 	window.location.href = "/calculationpage.html?id=" + id;
 }
@@ -56,7 +57,7 @@ function addData(){
 		alert("There was a problem, no classId was set!")
 	} else {
 		var newTable = document.createElement("TABLE");
-		var table = "<tr><td></td><td>Name     </td><td>Value    </td><td>Your Score</td></tr>";
+		var table = "<tr><td></td><td>Name     </td><td>Value(%)</td><td>Your Percent Score</td></tr>";
 		totalAtt = 0;
 		
 		$.ajax(
@@ -83,7 +84,7 @@ function addData(){
 							"index" : i
 						},
 						success : function(result) {
-							table += '<tr><td></td><td>' + result.name + '</td><td>' + result.value + '</td><td><input id="score' + i + '" onKeyPress="return numbersonly(this, event)" placeholder="Your score" value=""/></td></tr>';
+							table += '<tr><td></td><td><p class="type">' + result.name + '</p></td><td><p class="maxVal">' + result.value + '</p></td><td><input id="score' + i + '" onKeyPress="return numbersonly(this, event)" placeholder="Your score" value=""/></td></tr>';
 						},async:false,
 						error: function (jqXHR, exception) {
 							alert("Failed to get class attributes. Error 2.");
@@ -91,7 +92,7 @@ function addData(){
 				});
 		}
 		
-		table += '<tr><td></td><td>Letter Grade Wanted</td><td></td><td><input id="gradewanted" placeholder="Letter grade you want" value=""/></td></tr>';
+		table += '<tr><td></td><td>Percent Wanted</td><td></td><td><input id="gradewanted" placeholder="Percent " value=""/></td></tr>';
 
 		newTable.innerHTML = table;
 		document.getElementById('dynamicInput').appendChild(newTable);
@@ -101,67 +102,40 @@ function addData(){
 
 function calculateGrade()
 {
-	//goes through all input boxes and gets the total
-	var totalGot = 0;
-	
-	for (var i = 0; i < totalAtt; i++){
-		totalGot += parseInt($('#score' + i).val()) || 0;
-	}
-	
-	var wantedGrade = $('#gradewanted').val();
-	var output = "";
-	var missing = 0;
-	
-	if (wantedGrade == "A+"){
-		var min = 97;
-		missing = min - totalGot; 
-	}else if (wantedGrade == "A"){
-		var min = 93;
-		missing = min - totalGot;
-	}else if (wantedGrade == "A-"){
-		var min = 90;
-		missing = min - totalGot;
-	}else if (wantedGrade == "B+"){
-		var min = 87;
-		missing = min - totalGot;
-	}else if (wantedGrade == "B"){
-		var min = 83;
-		missing = min - totalGot;
-	}else if (wantedGrade == "B-"){
-		var min = 80;
-		missing = min - totalGot;
-	}else if (wantedGrade == "C+"){
-		var min = 77;
-		missing = min - totalGot;
-	}else if (wantedGrade == "C"){
-		var min = 73;
-		missing = min - totalGot;
-	}else if (wantedGrade == "C-"){
-		var min = 70;
-		missing = min - totalGot;
-	}else if (wantedGrade == "D+"){
-		var min = 67;
-		missing = min - totalGot;
-	}else if (wantedGrade == "D"){
-		var min = 63;
-		missing = min - totalGot;
-	}else if (wantedGrade == "D-"){
-		var min = 60;
-		missing = min - totalGot;
-	}else if (wantedGrade == "F"){
-		var min = 0;
-		missing = min - totalGot;
-	}else {
-		output = "Unkown letter grade.";
-	}
-	
-	if (output == ""){
-		output = "You need " + missing + " more points to get the grade you desire.";
-	}
-	
-	if (missing < 0){
-		output = "You've already reached your desired grade!";
-	}
-
-	document.getElementById('result_score').innerHTML = output;
+        var scoreArray = [];
+        var attributesNames = [];
+        var attributesValues = [];
+        for(var i = 0; i < totalAtt; i++)
+        {           
+            attributesNames[i] = $('.type')[i].innerHTML;
+            attributesValues[i] = $('.maxVal')[i].innerHTML;
+            scoreArray[i] = parseInt($('#score' + i).val()) || 0;
+        }
+        
+   $.ajax(
+				{
+					type : "POST",
+					url  : "/calculate",
+					data : {
+						"total" : attributesValues,
+						"attNames" : attributesNames,
+                                                "attValues" : scoreArray,
+						"goal" :  $('#gradewanted').val()
+					},
+					success : function(result) {
+                                            if(result == 0)
+                                                document.getElementById('result_score').innerHTML = "You already obtained goal percent";
+                                            else if(result == -1)
+						document.getElementById('result_score').innerHTML = "Immpossible to achieve goal percent";
+                                            else
+                                                document.getElementById('result_score').innerHTML = result + "%";
+					},async:false,
+					error: function (jqXHR, exception) {
+						alert("Failed to add the class.");
+					},
+					traditional: true
+				});
+         
+	                        
+         
 }
